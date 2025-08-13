@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Erreur de l'analyse</title>
+</head>
+<body>
+    <h2>Erreur de l'analyse</h2>
+    <p style="color:red;">{{ message }}</p>
+    {% if error %}
+    <pre>{{ error }}</pre>
+    {% endif %}
+    <a href="/">Essayer à nouveau</a>
+</body>
+</html> 

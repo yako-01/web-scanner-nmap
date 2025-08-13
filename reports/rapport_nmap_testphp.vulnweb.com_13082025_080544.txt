@@ -1,0 +1,98 @@
+=============================================================
+=========== RAPPORT D'ANALYSE COMPLÈTE AVEC NMAP ============
+=============================================================
+Cible : testphp.vulnweb.com
+Date : Wed Aug 13 08:05:44 UTC 2025
+
+=============================================================
+========= 1. RÉSOLUTION DNS – ADRESSES IP ASSOCIÉES =========
+=============================================================
+Adresse IP résolue : 44.228.249.3
+
+=============================================================
+====== 2. ANALYSE DES PORTS VULNÉRABLES (TCP) ==============
+=============================================================
+Starting Nmap 7.93 ( https://nmap.org ) at 2025-08-13 08:05 UTC
+Nmap scan report for testphp.vulnweb.com (44.228.249.3)
+Host is up (0.0049s latency).
+rDNS record for 44.228.249.3: ec2-44-228-249-3.us-west-2.compute.amazonaws.com
+Not shown: 46 filtered tcp ports (no-response)
+PORT    STATE SERVICE
+21/tcp  open  ftp
+80/tcp  open  http
+443/tcp open  https
+
+Nmap done: 1 IP address (1 host up) scanned in 1.80 seconds
+
+=============================================================
+======= 3. DÉTECTION DES SERVICES ET VERSIONS (-sV) ========
+=============================================================
+Starting Nmap 7.93 ( https://nmap.org ) at 2025-08-13 08:05 UTC
+Nmap scan report for testphp.vulnweb.com (44.228.249.3)
+Host is up (0.0028s latency).
+rDNS record for 44.228.249.3: ec2-44-228-249-3.us-west-2.compute.amazonaws.com
+Not shown: 46 filtered tcp ports (no-response)
+PORT    STATE SERVICE VERSION
+21/tcp  open  ftp?
+80/tcp  open  http    nginx/1.19.0
+443/tcp open  https?
+1 service unrecognized despite returning data. If you know the service/version, please submit the following fingerprint at https://nmap.org/cgi-bin/submit.cgi?new-service :
+SF-Port80-TCP:V=7.93%I=7%D=8/13%Time=689C4762%P=aarch64-unknown-linux-gnu%
+SF:r(GetRequest,C2,"HTTP/1\.0\x20403\x20connecting\x20to\x20:80:\x20connec
+SF:ting\x20to\x20:80:\x20dial\x20tcp\x20:80:\x20connect:\x20connection\x20
+SF:refused\r\nConnection:\x20close\r\n\r\nconnecting\x20to\x20:80:\x20conn
+SF:ecting\x20to\x20:80:\x20dial\x20tcp\x20:80:\x20connect:\x20connection\x
+SF:20refused")%r(HTTPOptions,C2,"HTTP/1\.0\x20403\x20connecting\x20to\x20:
+SF:80:\x20connecting\x20to\x20:80:\x20dial\x20tcp\x20:80:\x20connect:\x20c
+SF:onnection\x20refused\r\nConnection:\x20close\r\n\r\nconnecting\x20to\x2
+SF:0:80:\x20connecting\x20to\x20:80:\x20dial\x20tcp\x20:80:\x20connect:\x2
+SF:0connection\x20refused")%r(RTSPRequest,88,"HTTP/1\.0\x20400\x20reading\
+SF:x20request:\x20malformed\x20HTTP\x20version\x20\"RTSP/1\.0\"\r\nConnect
+SF:ion:\x20close\r\n\r\nreading\x20request:\x20malformed\x20HTTP\x20versio
+SF:n\x20\"RTSP/1\.0\"")%r(FourOhFourRequest,C2,"HTTP/1\.0\x20403\x20connec
+SF:ting\x20to\x20:80:\x20connecting\x20to\x20:80:\x20dial\x20tcp\x20:80:\x
+SF:20connect:\x20connection\x20refused\r\nConnection:\x20close\r\n\r\nconn
+SF:ecting\x20to\x20:80:\x20connecting\x20to\x20:80:\x20dial\x20tcp\x20:80:
+SF:\x20connect:\x20connection\x20refused")%r(GenericLines,78,"HTTP/1\.0\x2
+SF:0400\x20reading\x20request:\x20malformed\x20HTTP\x20request\x20\"\"\r\n
+SF:Connection:\x20close\r\n\r\nreading\x20request:\x20malformed\x20HTTP\x2
+SF:0request\x20\"\"")%r(Help,80,"HTTP/1\.0\x20400\x20reading\x20request:\x
+SF:20malformed\x20HTTP\x20request\x20\"HELP\"\r\nConnection:\x20close\r\n\
+SF:r\nreading\x20request:\x20malformed\x20HTTP\x20request\x20\"HELP\"")%r(
+SF:SSLSessionReq,1B0,"HTTP/1\.0\x20400\x20reading\x20request:\x20malformed
+SF:\x20HTTP\x20request\x20\"\\x16\\x03\\x00\\x00S\\x01\\x00\\x00O\\x03\\x0
+SF:0\?G\\xd7\\xf7\\xba,\\xee\\xea\\xb2`~\\xf3\\x00\\xfd\\x82{\\xb9\xd5\x96
+SF:\\xc8w\\x9b\\xe6\\xc4\\xdb<=\\xdbo\\xef\\x10n\\x00\\x00\(\\x00\\x16\\x0
+SF:0\\x13\\x00\"\r\nConnection:\x20close\r\n\r\nreading\x20request:\x20mal
+SF:formed\x20HTTP\x20request\x20\"\\x16\\x03\\x00\\x00S\\x01\\x00\\x00O\\x
+SF:03\\x00\?G\\xd7\\xf7\\xba,\\xee\\xea\\xb2`~\\xf3\\x00\\xfd\\x82{\\xb9\x
+SF:d5\x96\\xc8w\\x9b\\xe6\\xc4\\xdb<=\\xdbo\\xef\\x10n\\x00\\x00\(\\x00\\x
+SF:16\\x00\\x13\\x00\"");
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 200.64 seconds
+
+=============================================================
+========== 4. DÉTECTION DE FIREWALL / FILTRAGE ==============
+=============================================================
+Nmap scan report for testphp.vulnweb.com (44.228.249.3)
+Not shown: 46 filtered tcp ports (no-response)
+PORT    STATE SERVICE
+21/tcp  open  ftp
+80/tcp  open  http
+443/tcp open  https
+
+=============================================================
+========== 5. SCAN RAPIDE DES PORTS COMMUNS ================
+=============================================================
+Starting Nmap 7.93 ( https://nmap.org ) at 2025-08-13 08:09 UTC
+Nmap scan report for testphp.vulnweb.com (44.228.249.3)
+Host is up (0.0030s latency).
+rDNS record for 44.228.249.3: ec2-44-228-249-3.us-west-2.compute.amazonaws.com
+Not shown: 97 filtered tcp ports (no-response)
+PORT    STATE SERVICE
+21/tcp  open  ftp
+80/tcp  open  http
+443/tcp open  https
+
+Nmap done: 1 IP address (1 host up) scanned in 1.96 seconds

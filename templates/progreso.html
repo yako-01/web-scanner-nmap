@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Scanner Nmap en cours</title>
+</head>
+<body>
+    <h1>Scanner Nmap en cours</h1>
+    <div>
+        <div id="progressFill" style="background:#ccc;height:20px;width:0%;"></div>
+        <div id="progressText">0%</div>
+        <div id="statusMessage">Démarrage de l'analyse...</div>
+        <div id="loadingText">Traitement en cours...</div>
+    </div>
+    <div id="errorContainer" style="color:red; display:none;"></div>
+    <a href="/" id="backButton" style="display:none;">Retourner au début</a>
+    <script>
+        const scanId = '{{ scan_id }}';
+        const progressFill = document.getElementById('progressFill');
+        const progressText = document.getElementById('progressText');
+        const statusMessage = document.getElementById('statusMessage');
+        const errorContainer = document.getElementById('errorContainer');
+        const backButton = document.getElementById('backButton');
+        let checkInterval;
+        async function checkStatus() {
+            try {
+                const response = await fetch(`/check-status/${scanId}`);
+                const data = await response.json();
+                if (data.error) {
+                    showError(data.error);
+                    return;
+                }
+                progressFill.style.width = `${data.progress}%`;
+                progressText.textContent = `${data.progress}%`;
+                statusMessage.textContent = data.message;
+                if (data.status === 'completed') {
+                    clearInterval(checkInterval);
+                    setTimeout(() => {
+                        window.location.href = `/result/${scanId}`;
+                    }, 1000);
+                } else if (data.status === 'error') {
+                    clearInterval(checkInterval);
+                    showError(data.message);
+                }
+            } catch (error) {
+                showError("Erreur lors de la vérification de l'état de l'analyse");
+            }
+        }
+        function showError(message) {
+            errorContainer.textContent = message;
+            errorContainer.style.display = 'block';
+            backButton.style.display = 'inline';
+            document.getElementById('loadingText').style.display = 'none';
+        }
+        checkInterval = setInterval(checkStatus, 2000);
+        checkStatus();
+    </script>
+</body>
+</html>

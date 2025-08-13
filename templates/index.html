@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Scanner Nmap</title>
+</head>
+<body>
+    <h1>Scanner Nmap</h1>
+    <form id="scanForm">
+        <label for="link">Entrez un domaine:</label>
+        <input type="text" id="link" name="link" required>
+        <button type="submit" id="submitBtn">Démarrer l'analyse</button>
+    </form>
+    <div id="error" style="color:red; display:none;"></div>
+    <script>
+        document.getElementById('scanForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const submitBtn = document.getElementById('submitBtn');
+            const errorDiv = document.getElementById('error');
+            const link = document.getElementById('link').value;
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Départ...';
+            errorDiv.style.display = 'none';
+            try {
+                const response = await fetch('/start-scan', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+                    body: `link=${encodeURIComponent(link)}`
+                });
+                const data = await response.json();
+                if (response.ok && data.scan_id) {
+                    window.location.href = `/progress/${data.scan_id}`;
+                } else {
+                    throw new Error(data.error || "Erreur lors du démarrage de l'analyse");
+                }
+            } catch (error) {
+                errorDiv.textContent = `Error: ${error.message}`;
+                errorDiv.style.display = 'block';
+                submitBtn.disabled = false;
+                submitBtn.textContent = "Démarrer l'analyse";
+            }
+        });
+    </script>
+</body>
+</html>
