@@ -2,10 +2,10 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Scanner Nmap en cours</title>
+    <title>Scanner en cours</title>
 </head>
 <body>
-    <h1>Scanner Nmap en cours</h1>
+    <h1>Scanner en cours</h1>
     <div>
         <div id="progressFill" style="background:#ccc;height:20px;width:0%;"></div>
         <div id="progressText">0%</div>
@@ -52,7 +52,7 @@
             backButton.style.display = 'inline';
             document.getElementById('loadingText').style.display = 'none';
         }
-        checkInterval = setInterval(checkStatus, 2000);
+        checkInterval = setInterval(checkStatus, 10000);
         checkStatus();
     </script>
 </body>

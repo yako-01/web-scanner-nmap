@@ -61,6 +61,6 @@ PORTS="21,22,23,25,53,80,110,111,123,135,137,138,139,143,161,389,443,445,465,514
 
 } > "$RAPPORT"
 
-echo "Rapport généré : $RAPPORT"
+echo "Rapport NMAP généré : $RAPPORT"
 
 cat "$RAPPORT"

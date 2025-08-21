@@ -1,31 +1,42 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Scanner Nmap</title>
+    <title>Scanner</title>
 </head>
 <body>
-    <h1>Scanner Nmap</h1>
+    <h1>Scanner</h1>
     <form id="scanForm">
         <label for="link">Entrez un domaine:</label>
         <input type="text" id="link" name="link" required>
-        <button type="submit" id="submitBtn">Démarrer l'analyse</button>
+        <input type="hidden" id="type" name="type" value="">
+        <button type="button" id="submitBtn_zap">Démarrer l'analyse Zap</button>
+        <button type="button" id="submitBtn_nmap">Démarrer l'analyse Nmap</button>
+        <button type="button" id="submitBtn_general">Démarrer l'analyse General(Nmap et Zap)</button>
+
     </form>
     <div id="error" style="color:red; display:none;"></div>
     <script>
-        document.getElementById('scanForm').addEventListener('submit', async function(e) {
-            e.preventDefault();
-            const submitBtn = document.getElementById('submitBtn');
+        async function startScan(scanType, button) {
             const errorDiv = document.getElementById('error');
             const link = document.getElementById('link').value;
-            submitBtn.disabled = true;
-            submitBtn.textContent = 'Départ...';
+            const typeInput = document.getElementById('type');
+            
+            // asignamos el tipo al campo oculto
+            typeInput.value = scanType;
+
+            // desactivar el botón mientras se ejecuta
+            button.disabled = true;
+            const originalText = button.textContent;
+            button.textContent = 'Départ...';
             errorDiv.style.display = 'none';
+
             try {
                 const response = await fetch('/start-scan', {
                     method: 'POST',
                     headers: {'Content-Type': 'application/x-www-form-urlencoded'},
-                    body: `link=${encodeURIComponent(link)}`
+                    body: `link=${encodeURIComponent(link)}&type=${encodeURIComponent(scanType)}`
                 });
                 const data = await response.json();
                 if (response.ok && data.scan_id) {
@@ -36,9 +47,20 @@
             } catch (error) {
                 errorDiv.textContent = `Error: ${error.message}`;
                 errorDiv.style.display = 'block';
-                submitBtn.disabled = false;
-                submitBtn.textContent = "Démarrer l'analyse";
+                button.disabled = false;
+                button.textContent = originalText;
             }
+        }
+
+        // asignar eventos a los botones
+        document.getElementById('submitBtn_zap').addEventListener('click', function() {
+            startScan('zap', this);
+        });
+        document.getElementById('submitBtn_nmap').addEventListener('click', function() {
+            startScan('nmap', this);
+        });
+        document.getElementById('submitBtn_general').addEventListener('click', function() {
+            startScan('both', this);
         });
     </script>
 </body>
