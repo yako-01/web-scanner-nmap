@@ -1,6 +1,6 @@
 
 <!DOCTYPE html>
-<html lang="es">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <title>Scanner</title>
@@ -23,10 +23,10 @@
             const link = document.getElementById('link').value;
             const typeInput = document.getElementById('type');
             
-            // asignamos el tipo al campo oculto
+            //attribution le type au champ caché
             typeInput.value = scanType;
 
-            // desactivar el botón mientras se ejecuta
+            //désactiver le bouton pendant l'exécution
             button.disabled = true;
             const originalText = button.textContent;
             button.textContent = 'Départ...';
@@ -52,7 +52,7 @@
             }
         }
 
-        // asignar eventos a los botones
+        //attribuer des événements aux boutons
         document.getElementById('submitBtn_zap').addEventListener('click', function() {
             startScan('zap', this);
         });
