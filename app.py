@@ -139,12 +139,12 @@ def run_scan_async(scan_id, link):
             scan_status[scan_id]['filenames'] = [name for name in [results['nmap'], results['zap']] if name]
             return
 
-        # Verificar que el script existe y tiene permisos
+        #vérifiez que le script existe et dispose des permis
         if not os.path.exists(script_path):
             scan_status[scan_id]['status'] = 'error'
-            scan_status[scan_id]['message'] = f'Script no encontrado: {script_path}'
-            scan_status[scan_id]['error'] = 'Script no encontrado'
-            print(f"[ERROR] run_scan_async -> script no encontrado: {script_path}")
+            scan_status[scan_id]['message'] = f'Script non trouvé: {script_path}'
+            scan_status[scan_id]['error'] = 'Script non trouvé'
+            #print(f"[DEBUG] run_scan_async -> Script non trouvé: {script_path}")
             return
             
         #rendre le script exécutable
@@ -185,10 +185,10 @@ def run_scan_async(scan_id, link):
                     file_path = os.path.join('reports', os.path.basename(filename))
                     #print(f"[DEBUG] run_scan_async -> fichier exists en reports/: {os.path.basename(file_path)}")
                 else:
-                    print(f"[ERROR] run_scan_async -> archivo no encontrado en '{filename}' ni en 'reports/'")
+                    #print(f"[DEBUG] run_scan_async -> fichier non trouvé dans '{filename}' et en 'reports/'")
                     scan_status[scan_id]['status'] = 'error'
-                    scan_status[scan_id]['message'] = f'Archivo no encontrado en: {filename}'
-                    scan_status[scan_id]['error'] = 'Archivo no encontrado'
+                    scan_status[scan_id]['message'] = f'Fichier non trouvé dans: {filename}'
+                    scan_status[scan_id]['error'] = 'Fichier non trouvé'
                     return
                 
                 #vérifiez que le fichier n'est pas vide
@@ -196,36 +196,36 @@ def run_scan_async(scan_id, link):
                     #print(f"[DEBUG] run_scan_async -> fichier valide, size={os.path.getsize(file_path)} bytes")
                     scan_status[scan_id]['status'] = 'completed'
                     scan_status[scan_id]['progress'] = 100
-                    scan_status[scan_id]['message'] = 'Escaneo completado exitosamente'
+                    scan_status[scan_id]['message'] = "L'analyse a été effectuée avec succès"
                     scan_status[scan_id]['filename'] = os.path.basename(file_path)
                     #print(f"[DEBUG] run_scan_async -> filename final (basename): {scan_status[scan_id]['filename']}")
                 else:
-                    print(f"[ERROR] run_scan_async -> archivo vacío")
+                    #print(f"[DEBUG] run_scan_async -> fichier vide")
                     scan_status[scan_id]['status'] = 'error'
-                    scan_status[scan_id]['message'] = 'El reporte generado está vacío'
-                    scan_status[scan_id]['error'] = 'Reporte vacío'
+                    scan_status[scan_id]['message'] = 'Le rapport généré est vide'
+                    scan_status[scan_id]['error'] = 'Rapport vide'
             else:
-                print(f"[ERROR] run_scan_async -> no se encontró 'Rapport ZAP généré :' en la salida del script")
+                #print(f"[DEBUG] run_scan_async -> no se encontró 'Rapport ZAP généré :' en la salida del script")
                 scan_status[scan_id]['status'] = 'error'
-                scan_status[scan_id]['message'] = 'No se pudo generar el reporte'
-                scan_status[scan_id]['error'] = 'Archivo no encontrado'
+                scan_status[scan_id]['message'] = "Le rapport n'a pas pu être généré"
+                scan_status[scan_id]['error'] = 'Fichier non trouvé'
         else:
-            print(f"[ERROR] run_scan_async -> script falló, return_code={result.returncode}")
-            print(f"[STDERR] {result.stderr}")
-            print(f"[STDOUT] {result.stdout}")
+            #print(f"[DEBUG] run_scan_async -> script erreur, return_code={result.returncode}")
+            #print(f"[STDERR] {result.stderr}")
+            #print(f"[STDOUT] {result.stdout}")
             scan_status[scan_id]['status'] = 'error'
-            scan_status[scan_id]['message'] = f'Error en la ejecución: {result.stderr}'
+            scan_status[scan_id]['message'] = f"Erreur dans l'exécution : {result.stderr}"
             scan_status[scan_id]['error'] = result.stderr
             
     except subprocess.TimeoutExpired:
-        print(f"[ERROR] run_scan_async -> TIMEOUT")
+        #print(f"[DEBUG] run_scan_async -> TIMEOUT")
         scan_status[scan_id]['status'] = 'error'
-        scan_status[scan_id]['message'] = 'El escaneo tardó demasiado y fue interrumpido'
+        scan_status[scan_id]['message'] = 'Timeout'
         scan_status[scan_id]['error'] = 'Timeout'
     except Exception as e:
-        print(f"[ERROR] run_scan_async -> excepción: {str(e)}")
+        #print(f"[DEBUG] run_scan_async -> excepción: {str(e)}")
         scan_status[scan_id]['status'] = 'error'
-        scan_status[scan_id]['message'] = f'Error inesperado: {str(e)}'
+        scan_status[scan_id]['message'] = f'Erreur inattendu: {str(e)}'
         scan_status[scan_id]['error'] = str(e)
     
     #print(f"[DEBUG] run_scan_async -> fin scan_id={scan_id}, final status={scan_status.get(scan_id)}")
