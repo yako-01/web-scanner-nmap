@@ -1,0 +1,590 @@
+============================================================
+RAPPORT ZAP REGROUPÉ
+============================================================
+Cible : http://testphp.vulnweb.com
+Date : 2025-08-25 10:55:39 UTC
+------------------------------------------------------------
+Résumé des risques -> High: 32 | Medium: 134 | Low: 204 | Informational: 270
+
+=== Missing Anti-clickjacking Header ===
+Risque : Medium | Confiance : Medium
+
+Description :
+The response does not protect against 'ClickJacking' attacks. It should include either Content-Security-Policy with 'frame-ancestors' directive or X-Frame-Options.
+
+Solution :
+Modern Web browsers support the Content-Security-Policy and X-Frame-Options HTTP headers. Ensure one of them is set on all web pages returned by your site/app.
+If you expect the page to be framed only by pages on your server (e.g. it's part of a FRAMESET) then you'll want to use SAMEORIGIN, otherwise if you never expect the page to be framed, you should use DENY. Alternatively consider implementing Content Security Policy's "frame-ancestors" directive.
+
+Cas détectés (44) :
+1. URL : http://testphp.vulnweb.com/AJAX/index.php
+   Paramètre : x-frame-options
+2. URL : http://testphp.vulnweb.com/categories.php
+   Paramètre : x-frame-options
+3. URL : http://testphp.vulnweb.com/Mod_Rewrite_Shop/
+   Paramètre : x-frame-options
+4. URL : http://testphp.vulnweb.com/artists.php
+   Paramètre : x-frame-options
+5. URL : http://testphp.vulnweb.com/guestbook.php
+   Paramètre : x-frame-options
+6. URL : http://testphp.vulnweb.com
+   Paramètre : x-frame-options
+7. URL : http://testphp.vulnweb.com/login.php
+   Paramètre : x-frame-options
+8. URL : http://testphp.vulnweb.com/cart.php
+   Paramètre : x-frame-options
+9. URL : http://testphp.vulnweb.com/hpp/
+   Paramètre : x-frame-options
+10. URL : http://testphp.vulnweb.com/index.php
+   Paramètre : x-frame-options
+11. URL : http://testphp.vulnweb.com/disclaimer.php
+   Paramètre : x-frame-options
+12. URL : http://testphp.vulnweb.com/listproducts.php?cat=1
+   Paramètre : x-frame-options
+13. URL : http://testphp.vulnweb.com/search.php?test=query
+   Paramètre : x-frame-options
+14. URL : http://testphp.vulnweb.com/listproducts.php?cat=3
+   Paramètre : x-frame-options
+15. URL : http://testphp.vulnweb.com/signup.php
+   Paramètre : x-frame-options
+16. URL : http://testphp.vulnweb.com/Mod_Rewrite_Shop/Details/network-attached-storage-dlink/1/
+   Paramètre : x-frame-options
+17. URL : http://testphp.vulnweb.com/artists.php?artist=1
+   Paramètre : x-frame-options
+18. URL : http://testphp.vulnweb.com/listproducts.php?cat=2
+   Paramètre : x-frame-options
+19. URL : http://testphp.vulnweb.com/guestbook.php
+   Paramètre : x-frame-options
+20. URL : http://testphp.vulnweb.com/hpp/?pp=12
+   Paramètre : x-frame-options
+21. URL : http://testphp.vulnweb.com/artists.php?artist=2
+   Paramètre : x-frame-options
+22. URL : http://testphp.vulnweb.com/Mod_Rewrite_Shop/Details/web-camera-a4tech/2/
+   Paramètre : x-frame-options
+23. URL : http://testphp.vulnweb.com/listproducts.php?cat=4
+   Paramètre : x-frame-options
+24. URL : http://testphp.vulnweb.com/Mod_Rewrite_Shop/Details/color-printer/3/
+   Paramètre : x-frame-options
+25. URL : http://testphp.vulnweb.com/artists.php?artist=3
+   Paramètre : x-frame-options
+26. URL : http://testphp.vulnweb.com/product.php?pic=1
+   Paramètre : x-frame-options
+27. URL : http://testphp.vulnweb.com/product.php?pic=2
+   Paramètre : x-frame-options
+28. URL : http://testphp.vulnweb.com/product.php?pic=7
+   Paramètre : x-frame-options
+29. URL : http://testphp.vulnweb.com/product.php?pic=4
+   Paramètre : x-frame-options
+30. URL : http://testphp.vulnweb.com/product.php?pic=5
+   Paramètre : x-frame-options
+31. URL : http://testphp.vulnweb.com/product.php?pic=3
+   Paramètre : x-frame-options
+32. URL : http://testphp.vulnweb.com/Mod_Rewrite_Shop/RateProduct-1.html
+   Paramètre : x-frame-options
+33. URL : http://testphp.vulnweb.com/Mod_Rewrite_Shop/BuyProduct-1/
+   Paramètre : x-frame-options
+34. URL : http://testphp.vulnweb.com/secured/newuser.php
+   Paramètre : x-frame-options
+35. URL : http://testphp.vulnweb.com/hpp/params.php?p=valid&pp=12
+   Paramètre : x-frame-options
+36. URL : http://testphp.vulnweb.com/Mod_Rewrite_Shop/RateProduct-2.html
+   Paramètre : x-frame-options
+37. URL : http://testphp.vulnweb.com/product.php?pic=6
+   Paramètre : x-frame-options
+38. URL : http://testphp.vulnweb.com/listproducts.php?artist=1
+   Paramètre : x-frame-options
+39. URL : http://testphp.vulnweb.com/Mod_Rewrite_Shop/BuyProduct-2/
+   Paramètre : x-frame-options
+40. URL : http://testphp.vulnweb.com/listproducts.php?artist=2
+   Paramètre : x-frame-options
+41. URL : http://testphp.vulnweb.com/Mod_Rewrite_Shop/BuyProduct-3/
+   Paramètre : x-frame-options
+42. URL : http://testphp.vulnweb.com/listproducts.php?artist=3
+   Paramètre : x-frame-options
+43. URL : http://testphp.vulnweb.com/Mod_Rewrite_Shop/RateProduct-3.html
+   Paramètre : x-frame-options
+44. URL : http://testphp.vulnweb.com/cart.php
+   Paramètre : x-frame-options
+
+============================================================
+
+=== Content Security Policy (CSP) Header Not Set ===
+Risque : Medium | Confiance : High
+
+Description :
+Content Security Policy (CSP) is an added layer of security that helps to detect and mitigate certain types of attacks, including Cross Site Scripting (XSS) and data injection attacks. These attacks are used for everything from data theft to site defacement or distribution of malware. CSP provides a set of standard HTTP headers that allow website owners to declare approved sources of content that browsers should be allowed to load on that page — covered types are JavaScript, CSS, HTML frames, fonts, images and embeddable objects such as Java applets, ActiveX, audio and video files.
+
+Solution :
+Ensure that your web server, application server, load balancer, etc. is configured to set the Content-Security-Policy header.
+
+Cas détectés (48) :
+1. URL : http://testphp.vulnweb.com/robots.txt
+   Paramètre : 
+2. URL : http://testphp.vulnweb.com/sitemap.xml
+   Paramètre : 
+3. URL : http://testphp.vulnweb.com
+   Paramètre : 
+4. URL : http://testphp.vulnweb.com/Mod_Rewrite_Shop/
+   Paramètre : 
+5. URL : http://testphp.vulnweb.com/guestbook.php
+   Paramètre : 
+6. URL : http://testphp.vulnweb.com/AJAX/index.php
+   Paramètre : 
+7. URL : http://testphp.vulnweb.com/categories.php
+   Paramètre : 
+8. URL : http://testphp.vulnweb.com/artists.php
+   Paramètre : 
+9. URL : http://testphp.vulnweb.com/hpp/
+   Paramètre : 
+10. URL : http://testphp.vulnweb.com/cart.php
+   Paramètre : 
+11. URL : http://testphp.vulnweb.com/login.php
+   Paramètre : 
+12. URL : http://testphp.vulnweb.com/privacy.php
+   Paramètre : 
+13. URL : http://testphp.vulnweb.com/high
+   Paramètre : 
+14. URL : http://testphp.vulnweb.com/index.php
+   Paramètre : 
+15. URL : http://testphp.vulnweb.com/disclaimer.php
+   Paramètre : 
+16. URL : http://testphp.vulnweb.com/search.php?test=query
+   Paramètre : 
+17. URL : http://testphp.vulnweb.com/listproducts.php?cat=1
+   Paramètre : 
+18. URL : http://testphp.vulnweb.com/listproducts.php?cat=3
+   Paramètre : 
+19. URL : http://testphp.vulnweb.com/Mod_Rewrite_Shop/Details/network-attached-storage-dlink/1/
+   Paramètre : 
+20. URL : http://testphp.vulnweb.com/signup.php
+   Paramètre : 
+21. URL : http://testphp.vulnweb.com/artists.php?artist=1
+   Paramètre : 
+22. URL : http://testphp.vulnweb.com/hpp/?pp=12
+   Paramètre : 
+23. URL : http://testphp.vulnweb.com/listproducts.php?cat=2
+   Paramètre : 
+24. URL : http://testphp.vulnweb.com/Mod_Rewrite_Shop/Details/web-camera-a4tech/2/
+   Paramètre : 
+25. URL : http://testphp.vulnweb.com/guestbook.php
+   Paramètre : 
+26. URL : http://testphp.vulnweb.com/listproducts.php?cat=4
+   Paramètre : 
+27. URL : http://testphp.vulnweb.com/Mod_Rewrite_Shop/Details/color-printer/3/
+   Paramètre : 
+28. URL : http://testphp.vulnweb.com/artists.php?artist=2
+   Paramètre : 
+29. URL : http://testphp.vulnweb.com/artists.php?artist=3
+   Paramètre : 
+30. URL : http://testphp.vulnweb.com/product.php?pic=1
+   Paramètre : 
+31. URL : http://testphp.vulnweb.com/product.php?pic=2
+   Paramètre : 
+32. URL : http://testphp.vulnweb.com/product.php?pic=4
+   Paramètre : 
+33. URL : http://testphp.vulnweb.com/product.php?pic=5
+   Paramètre : 
+34. URL : http://testphp.vulnweb.com/product.php?pic=3
+   Paramètre : 
+35. URL : http://testphp.vulnweb.com/product.php?pic=7
+   Paramètre : 
+36. URL : http://testphp.vulnweb.com/Mod_Rewrite_Shop/BuyProduct-1/
+   Paramètre : 
+37. URL : http://testphp.vulnweb.com/Mod_Rewrite_Shop/RateProduct-1.html
+   Paramètre : 
+38. URL : http://testphp.vulnweb.com/secured/newuser.php
+   Paramètre : 
+39. URL : http://testphp.vulnweb.com/hpp/params.php?p=valid&pp=12
+   Paramètre : 
+40. URL : http://testphp.vulnweb.com/Mod_Rewrite_Shop/RateProduct-2.html
+   Paramètre : 
+41. URL : http://testphp.vulnweb.com/listproducts.php?artist=1
+   Paramètre : 
+42. URL : http://testphp.vulnweb.com/Mod_Rewrite_Shop/BuyProduct-2/
+   Paramètre : 
+43. URL : http://testphp.vulnweb.com/product.php?pic=6
+   Paramètre : 
+44. URL : http://testphp.vulnweb.com/listproducts.php?artist=2
+   Paramètre : 
+45. URL : http://testphp.vulnweb.com/Mod_Rewrite_Shop/BuyProduct-3/
+   Paramètre : 
+46. URL : http://testphp.vulnweb.com/Mod_Rewrite_Shop/RateProduct-3.html
+   Paramètre : 
+47. URL : http://testphp.vulnweb.com/cart.php
+   Paramètre : 
+48. URL : http://testphp.vulnweb.com/listproducts.php?artist=3
+   Paramètre : 
+
+============================================================
+
+=== Absence of Anti-CSRF Tokens ===
+Risque : Medium | Confiance : Low
+
+Description :
+No Anti-CSRF tokens were found in a HTML submission form.
+A cross-site request forgery is an attack that involves forcing a victim to send an HTTP request to a target destination without their knowledge or intent in order to perform an action as the victim. The underlying cause is application functionality using predictable URL/form actions in a repeatable way. The nature of the attack is that CSRF exploits the trust that a web site has for a user. By contrast, cross-site scripting (XSS) exploits the trust that a user has for a web site. Like XSS, CSRF attacks are not necessarily cross-site, but they can be. Cross-site request forgery is also known as CSRF, XSRF, one-click attack, session riding, confused deputy, and sea surf.
+
+CSRF attacks are effective in a number of situations, including:
+    * The victim has an active session on the target site.
+    * The victim is authenticated via HTTP auth on the target site.
+    * The victim is on the same local network as the target site.
+
+CSRF has primarily been used to perform an action against a target site using the victim's privileges, but recent techniques have been discovered to disclose information by gaining access to the response. The risk of information disclosure is dramatically increased when the target site is vulnerable to XSS, because XSS can be used as a platform for CSRF, allowing the attack to operate within the bounds of the same-origin policy.
+
+Solution :
+Phase: Architecture and Design
+Use a vetted library or framework that does not allow this weakness to occur or provides constructs that make this weakness easier to avoid.
+For example, use anti-CSRF packages such as the OWASP CSRFGuard.
+
+Phase: Implementation
+Ensure that your application is free of cross-site scripting issues, because most CSRF defenses can be bypassed using attacker-controlled script.
+
+Phase: Architecture and Design
+Generate a unique nonce for each form, place the nonce into the form, and verify the nonce upon receipt of the form. Be sure that the nonce is not predictable (CWE-330).
+Note that this can be bypassed using XSS.
+
+Identify especially dangerous operations. When the user performs a dangerous operation, send a separate confirmation request to ensure that the user intended to perform that operation.
+Note that this can be bypassed using XSS.
+
+Use the ESAPI Session Management control.
+This control includes a component for CSRF.
+
+Do not use the GET method for any request that triggers a state change.
+
+Phase: Implementation
+Check the HTTP Referer header to see if the request originated from an expected page. This could break legitimate functionality, because users or proxies may have disabled sending the Referer for privacy reasons.
+
+Cas détectés (40) :
+1. URL : http://testphp.vulnweb.com
+   Paramètre : 
+   Preuve : <form action="search.php?test=query" method="post">
+2. URL : http://testphp.vulnweb.com/guestbook.php
+   Paramètre : 
+   Preuve : <form action="" method="post" name="faddentry">
+3. URL : http://testphp.vulnweb.com/artists.php
+   Paramètre : 
+   Preuve : <form action="search.php?test=query" method="post">
+4. URL : http://testphp.vulnweb.com/categories.php
+   Paramètre : 
+   Preuve : <form action="search.php?test=query" method="post">
+5. URL : http://testphp.vulnweb.com/guestbook.php
+   Paramètre : 
+   Preuve : <form action="search.php?test=query" method="post">
+6. URL : http://testphp.vulnweb.com/login.php
+   Paramètre : 
+   Preuve : <form name="loginform" method="post" action="userinfo.php">
+7. URL : http://testphp.vulnweb.com/login.php
+   Paramètre : 
+   Preuve : <form action="search.php?test=query" method="post">
+8. URL : http://testphp.vulnweb.com/cart.php
+   Paramètre : 
+   Preuve : <form action="search.php?test=query" method="post">
+9. URL : http://testphp.vulnweb.com/index.php
+   Paramètre : 
+   Preuve : <form action="search.php?test=query" method="post">
+10. URL : http://testphp.vulnweb.com/disclaimer.php
+   Paramètre : 
+   Preuve : <form action="search.php?test=query" method="post">
+11. URL : http://testphp.vulnweb.com/listproducts.php?cat=1
+   Paramètre : 
+   Preuve : <form action="search.php?test=query" method="post">
+12. URL : http://testphp.vulnweb.com/search.php?test=query
+   Paramètre : 
+   Preuve : <form action="search.php?test=query" method="post">
+13. URL : http://testphp.vulnweb.com/listproducts.php?cat=3
+   Paramètre : 
+   Preuve : <form action="search.php?test=query" method="post">
+14. URL : http://testphp.vulnweb.com/signup.php
+   Paramètre : 
+   Preuve : <form name="form1" method="post" action="/secured/newuser.php">
+15. URL : http://testphp.vulnweb.com/signup.php
+   Paramètre : 
+   Preuve : <form action="search.php?test=query" method="post">
+16. URL : http://testphp.vulnweb.com/artists.php?artist=1
+   Paramètre : 
+   Preuve : <form action="search.php?test=query" method="post">
+17. URL : http://testphp.vulnweb.com/listproducts.php?cat=2
+   Paramètre : 
+   Preuve : <form action="search.php?test=query" method="post">
+18. URL : http://testphp.vulnweb.com/listproducts.php?cat=4
+   Paramètre : 
+   Preuve : <form action="search.php?test=query" method="post">
+19. URL : http://testphp.vulnweb.com/guestbook.php
+   Paramètre : 
+   Preuve : <form action="" method="post" name="faddentry">
+20. URL : http://testphp.vulnweb.com/guestbook.php
+   Paramètre : 
+   Preuve : <form action="search.php?test=query" method="post">
+21. URL : http://testphp.vulnweb.com/artists.php?artist=2
+   Paramètre : 
+   Preuve : <form action="search.php?test=query" method="post">
+22. URL : http://testphp.vulnweb.com/artists.php?artist=3
+   Paramètre : 
+   Preuve : <form action="search.php?test=query" method="post">
+23. URL : http://testphp.vulnweb.com/product.php?pic=1
+   Paramètre : 
+   Preuve : <form name='f_addcart' method='POST' action='cart.php'>
+24. URL : http://testphp.vulnweb.com/product.php?pic=1
+   Paramètre : 
+   Preuve : <form action="search.php?test=query" method="post">
+25. URL : http://testphp.vulnweb.com/product.php?pic=2
+   Paramètre : 
+   Preuve : <form name='f_addcart' method='POST' action='cart.php'>
+26. URL : http://testphp.vulnweb.com/product.php?pic=2
+   Paramètre : 
+   Preuve : <form action="search.php?test=query" method="post">
+27. URL : http://testphp.vulnweb.com/product.php?pic=4
+   Paramètre : 
+   Preuve : <form name='f_addcart' method='POST' action='cart.php'>
+28. URL : http://testphp.vulnweb.com/product.php?pic=4
+   Paramètre : 
+   Preuve : <form action="search.php?test=query" method="post">
+29. URL : http://testphp.vulnweb.com/product.php?pic=7
+   Paramètre : 
+   Preuve : <form name='f_addcart' method='POST' action='cart.php'>
+30. URL : http://testphp.vulnweb.com/product.php?pic=3
+   Paramètre : 
+   Preuve : <form name='f_addcart' method='POST' action='cart.php'>
+31. URL : http://testphp.vulnweb.com/product.php?pic=5
+   Paramètre : 
+   Preuve : <form name='f_addcart' method='POST' action='cart.php'>
+32. URL : http://testphp.vulnweb.com/product.php?pic=5
+   Paramètre : 
+   Preuve : <form action="search.php?test=query" method="post">
+33. URL : http://testphp.vulnweb.com/product.php?pic=7
+   Paramètre : 
+   Preuve : <form action="search.php?test=query" method="post">
+34. URL : http://testphp.vulnweb.com/product.php?pic=3
+   Paramètre : 
+   Preuve : <form action="search.php?test=query" method="post">
+35. URL : http://testphp.vulnweb.com/listproducts.php?artist=1
+   Paramètre : 
+   Preuve : <form action="search.php?test=query" method="post">
+36. URL : http://testphp.vulnweb.com/listproducts.php?artist=2
+   Paramètre : 
+   Preuve : <form action="search.php?test=query" method="post">
+37. URL : http://testphp.vulnweb.com/product.php?pic=6
+   Paramètre : 
+   Preuve : <form name='f_addcart' method='POST' action='cart.php'>
+38. URL : http://testphp.vulnweb.com/listproducts.php?artist=3
+   Paramètre : 
+   Preuve : <form action="search.php?test=query" method="post">
+39. URL : http://testphp.vulnweb.com/cart.php
+   Paramètre : 
+   Preuve : <form action="search.php?test=query" method="post">
+40. URL : http://testphp.vulnweb.com/product.php?pic=6
+   Paramètre : 
+   Preuve : <form action="search.php?test=query" method="post">
+
+============================================================
+
+=== Cross Site Scripting (Reflected) ===
+Risque : High | Confiance : Medium
+
+Description :
+Cross-site Scripting (XSS) is an attack technique that involves echoing attacker-supplied code into a user's browser instance. A browser instance can be a standard web browser client, or a browser object embedded in a software product such as the browser within WinAmp, an RSS reader, or an email client. The code itself is usually written in HTML/JavaScript, but may also extend to VBScript, ActiveX, Java, Flash, or any other browser-supported technology.
+When an attacker gets a user's browser to execute his/her code, the code will run within the security context (or zone) of the hosting web site. With this level of privilege, the code has the ability to read, modify and transmit any sensitive data accessible by the browser. A Cross-site Scripted user could have his/her account hijacked (cookie theft), their browser redirected to another location, or possibly shown fraudulent content delivered by the web site they are visiting. Cross-site Scripting attacks essentially compromise the trust relationship between a user and the web site. Applications utilizing browser object instances which load content from the file system may execute code under the local machine zone allowing for system compromise.
+
+There are three types of Cross-site Scripting attacks: non-persistent, persistent and DOM-based.
+Non-persistent attacks and DOM-based attacks require a user to either visit a specially crafted link laced with malicious code, or visit a malicious web page containing a web form, which when posted to the vulnerable site, will mount the attack. Using a malicious form will oftentimes take place when the vulnerable resource only accepts HTTP POST requests. In such a case, the form can be submitted automatically, without the victim's knowledge (e.g. by using JavaScript). Upon clicking on the malicious link or submitting the malicious form, the XSS payload will get echoed back and will get interpreted by the user's browser and execute. Another technique to send almost arbitrary requests (GET and POST) is by using an embedded client, such as Adobe Flash.
+Persistent attacks occur when the malicious code is submitted to a web site where it's stored for a period of time. Examples of an attacker's favorite targets often include message board posts, web mail messages, and web chat software. The unsuspecting user is not required to interact with any additional site/link (e.g. an attacker site or a malicious link sent via email), just simply view the web page containing the code.
+
+Solution :
+Phase: Architecture and Design
+Use a vetted library or framework that does not allow this weakness to occur or provides constructs that make this weakness easier to avoid.
+Examples of libraries and frameworks that make it easier to generate properly encoded output include Microsoft's Anti-XSS library, the OWASP ESAPI Encoding module, and Apache Wicket.
+
+Phases: Implementation; Architecture and Design
+Understand the context in which your data will be used and the encoding that will be expected. This is especially important when transmitting data between different components, or when generating outputs that can contain multiple encodings at the same time, such as web pages or multi-part mail messages. Study all expected communication protocols and data representations to determine the required encoding strategies.
+For any data that will be output to another web page, especially any data that was received from external inputs, use the appropriate encoding on all non-alphanumeric characters.
+Consult the XSS Prevention Cheat Sheet for more details on the types of encoding and escaping that are needed.
+
+Phase: Architecture and Design
+For any security checks that are performed on the client side, ensure that these checks are duplicated on the server side, in order to avoid CWE-602. Attackers can bypass the client-side checks by modifying values after the checks have been performed, or by changing the client to remove the client-side checks entirely. Then, these modified values would be submitted to the server.
+
+If available, use structured mechanisms that automatically enforce the separation between data and code. These mechanisms may be able to provide the relevant quoting, encoding, and validation automatically, instead of relying on the developer to provide this capability at every point where output is generated.
+
+Phase: Implementation
+For every web page that is generated, use and specify a character encoding such as ISO-8859-1 or UTF-8. When an encoding is not specified, the web browser may choose a different encoding by guessing which encoding is actually being used by the web page. This can cause the web browser to treat certain sequences as special, opening up the client to subtle XSS attacks. See CWE-116 for more mitigations related to encoding/escaping.
+
+To help mitigate XSS attacks against the user's session cookie, set the session cookie to be HttpOnly. In browsers that support the HttpOnly feature (such as more recent versions of Internet Explorer and Firefox), this attribute can prevent the user's session cookie from being accessible to malicious client-side scripts that use document.cookie. This is not a complete solution, since HttpOnly is not supported by all browsers. More importantly, XMLHTTPRequest and other powerful browser technologies provide read access to HTTP headers, including the Set-Cookie header in which the HttpOnly flag is set.
+
+Assume all input is malicious. Use an "accept known good" input validation strategy, i.e., use an allow list of acceptable inputs that strictly conform to specifications. Reject any input that does not strictly conform to specifications, or transform it into something that does. Do not rely exclusively on looking for malicious or malformed inputs (i.e., do not rely on a deny list). However, deny lists can be useful for detecting potential attacks or determining which inputs are so malformed that they should be rejected outright.
+
+When performing input validation, consider all potentially relevant properties, including length, type of input, the full range of acceptable values, missing or extra inputs, syntax, consistency across related fields, and conformance to business rules. As an example of business rule logic, "boat" may be syntactically valid because it only contains alphanumeric characters, but it is not valid if you are expecting colors such as "red" or "blue."
+
+Ensure that you perform input validation at well-defined interfaces within the application. This will help protect the application even if a component is reused or moved elsewhere.
+
+Cas détectés (19) :
+1. URL : http://testphp.vulnweb.com/secured/newuser.php
+   Paramètre : uuname
+   Payload : </li><scrIpt>alert(1);</scRipt><li>
+   Preuve : </li><scrIpt>alert(1);</scRipt><li>
+2. URL : http://testphp.vulnweb.com/guestbook.php
+   Paramètre : name
+   Payload : </strong><scrIpt>alert(1);</scRipt><strong>
+   Preuve : </strong><scrIpt>alert(1);</scRipt><strong>
+3. URL : http://testphp.vulnweb.com/search.php?test=%27%22%3CscrIpt%3Ealert%281%29%3B%3C%2FscRipt%3E
+   Paramètre : test
+   Payload : '"<scrIpt>alert(1);</scRipt>
+   Preuve : '"<scrIpt>alert(1);</scRipt>
+4. URL : http://testphp.vulnweb.com/guestbook.php
+   Paramètre : text
+   Payload : </td><scrIpt>alert(1);</scRipt><td>
+   Preuve : </td><scrIpt>alert(1);</scRipt><td>
+5. URL : http://testphp.vulnweb.com/userinfo.php
+   Paramètre : uname
+   Payload : '"<scrIpt>alert(1);</scRipt>
+   Preuve : '"<scrIpt>alert(1);</scRipt>
+6. URL : http://testphp.vulnweb.com/search.php?test=query
+   Paramètre : searchFor
+   Payload : </h2><scrIpt>alert(1);</scRipt><h2>
+   Preuve : </h2><scrIpt>alert(1);</scRipt><h2>
+7. URL : http://testphp.vulnweb.com/userinfo.php
+   Paramètre : pass
+   Payload : '"<scrIpt>alert(1);</scRipt>
+   Preuve : '"<scrIpt>alert(1);</scRipt>
+8. URL : http://testphp.vulnweb.com/secured/newuser.php
+   Paramètre : urname
+   Payload : </li><scrIpt>alert(1);</scRipt><li>
+   Preuve : </li><scrIpt>alert(1);</scRipt><li>
+9. URL : http://testphp.vulnweb.com/artists.php?artist=%3CscrIpt%3Ealert%281%29%3B%3C%2FscRipt%3E
+   Paramètre : artist
+   Payload : <scrIpt>alert(1);</scRipt>
+   Preuve : <scrIpt>alert(1);</scRipt>
+10. URL : http://testphp.vulnweb.com/secured/newuser.php
+   Paramètre : ucc
+   Payload : </li><scrIpt>alert(1);</scRipt><li>
+   Preuve : </li><scrIpt>alert(1);</scRipt><li>
+11. URL : http://testphp.vulnweb.com/hpp/params.php?p=%3CscrIpt%3Ealert%281%29%3B%3C%2FscRipt%3E&pp=12
+   Paramètre : p
+   Payload : <scrIpt>alert(1);</scRipt>
+   Preuve : <scrIpt>alert(1);</scRipt>
+12. URL : http://testphp.vulnweb.com/secured/newuser.php
+   Paramètre : uemail
+   Payload : </li><scrIpt>alert(1);</scRipt><li>
+   Preuve : </li><scrIpt>alert(1);</scRipt><li>
+13. URL : http://testphp.vulnweb.com/listproducts.php?cat=%3CscrIpt%3Ealert%281%29%3B%3C%2FscRipt%3E
+   Paramètre : cat
+   Payload : <scrIpt>alert(1);</scRipt>
+   Preuve : <scrIpt>alert(1);</scRipt>
+14. URL : http://testphp.vulnweb.com/product.php?pic=%3CscrIpt%3Ealert%281%29%3B%3C%2FscRipt%3E
+   Paramètre : pic
+   Payload : <scrIpt>alert(1);</scRipt>
+   Preuve : <scrIpt>alert(1);</scRipt>
+15. URL : http://testphp.vulnweb.com/listproducts.php?artist=%3CscrIpt%3Ealert%281%29%3B%3C%2FscRipt%3E
+   Paramètre : artist
+   Payload : <scrIpt>alert(1);</scRipt>
+   Preuve : <scrIpt>alert(1);</scRipt>
+16. URL : http://testphp.vulnweb.com/hpp/params.php?p=valid&pp=%3CscrIpt%3Ealert%281%29%3B%3C%2FscRipt%3E
+   Paramètre : pp
+   Payload : <scrIpt>alert(1);</scRipt>
+   Preuve : <scrIpt>alert(1);</scRipt>
+17. URL : http://testphp.vulnweb.com/secured/newuser.php
+   Paramètre : uphone
+   Payload : </li><scrIpt>alert(1);</scRipt><li>
+   Preuve : </li><scrIpt>alert(1);</scRipt><li>
+18. URL : http://testphp.vulnweb.com/hpp/?pp=%22+onMouseOver%3D%22alert%281%29%3B
+   Paramètre : pp
+   Payload : " onMouseOver="alert(1);
+   Preuve : " onMouseOver="alert(1);
+19. URL : http://testphp.vulnweb.com/secured/newuser.php
+   Paramètre : uaddress
+   Payload : </li><scrIpt>alert(1);</scRipt><li>
+   Preuve : </li><scrIpt>alert(1);</scRipt><li>
+
+============================================================
+
+=== SQL Injection - MySQL ===
+Risque : High | Confiance : Medium
+
+Description :
+SQL injection may be possible.
+
+Solution :
+Do not trust client side input, even if there is client side validation in place.
+In general, type check all data on the server side.
+If the application uses JDBC, use PreparedStatement or CallableStatement, with parameters passed by '?'
+If the application uses ASP, use ADO Command Objects with strong type checking and parameterized queries.
+If database Stored Procedures can be used, use them.
+Do *not* concatenate strings into queries in the stored procedure, or use 'exec', 'exec immediate', or equivalent functionality!
+Do not create dynamic SQL queries using simple string concatenation.
+Escape all data received from the client.
+Apply an 'allow list' of allowed characters, or a 'deny list' of disallowed characters in user input.
+Apply the principle of least privilege by using the least privileged database user possible.
+In particular, avoid using the 'sa' or 'db-owner' database users. This does not eliminate SQL injection, but minimizes its impact.
+Grant the minimum database access that is necessary for the application.
+
+Cas détectés (13) :
+1. URL : http://testphp.vulnweb.com/userinfo.php
+   Paramètre : uname
+   Payload : '
+   Preuve : You have an error in your SQL syntax
+2. URL : http://testphp.vulnweb.com/secured/newuser.php
+   Paramètre : uuname
+   Payload : '
+   Preuve : You have an error in your SQL syntax
+3. URL : http://testphp.vulnweb.com/search.php?test=%27
+   Paramètre : test
+   Payload : '
+   Preuve : You have an error in your SQL syntax
+4. URL : http://testphp.vulnweb.com/userinfo.php
+   Paramètre : pass
+   Payload : '
+   Preuve : You have an error in your SQL syntax
+5. URL : http://testphp.vulnweb.com/search.php?test=query
+   Paramètre : searchFor
+   Payload : ZAP'
+   Preuve : You have an error in your SQL syntax
+6. URL : http://testphp.vulnweb.com/artists.php?artist=%27
+   Paramètre : artist
+   Payload : '
+   Preuve : You have an error in your SQL syntax
+7. URL : http://testphp.vulnweb.com/product.php?pic=%27
+   Paramètre : pic
+   Payload : '
+   Preuve : You have an error in your SQL syntax
+8. URL : http://testphp.vulnweb.com/listproducts.php?cat=%27
+   Paramètre : cat
+   Payload : '
+   Preuve : You have an error in your SQL syntax
+9. URL : http://testphp.vulnweb.com/listproducts.php?artist=%27
+   Paramètre : artist
+   Payload : '
+   Preuve : You have an error in your SQL syntax
+10. URL : http://testphp.vulnweb.com/secured/newuser.php
+   Paramètre : uuname
+   Payload : ZAP' / sleep(15) / '
+11. URL : http://testphp.vulnweb.com/userinfo.php
+   Paramètre : uname
+   Payload : ZAP' / sleep(15) / '
+12. URL : http://testphp.vulnweb.com/artists.php?artist=3
+   Paramètre : artist
+   Payload : 3 and 0 in (select sleep(15) ) --
+13. URL : http://testphp.vulnweb.com/product.php?pic=6
+   Paramètre : pic
+   Payload : 6 and 0 in (select sleep(15) ) --
+
+============================================================
+
+=== XSLT Injection ===
+Risque : Medium | Confiance : Medium
+
+Description :
+Injection using XSL transformations may be possible, and may allow an attacker to read system information, read and write files, or execute arbitrary code.
+
+Solution :
+Sanitize and analyze every user input coming from any client-side.
+
+Cas détectés (2) :
+1. URL : http://testphp.vulnweb.com/showimage.php?file=%3Cxsl%3Avalue-of+select%3D%22document%28%27http%3A%2F%2Ftestphp.vulnweb.com%3A22%27%29%22%2F%3E&size=160
+   Paramètre : file
+   Payload : <xsl:value-of select="document('http://testphp.vulnweb.com:22')"/>
+   Preuve : failed to open stream
+2. URL : http://testphp.vulnweb.com/showimage.php?file=%3Cxsl%3Avalue-of+select%3D%22document%28%27http%3A%2F%2Ftestphp.vulnweb.com%3A22%27%29%22%2F%3E
+   Paramètre : file
+   Payload : <xsl:value-of select="document('http://testphp.vulnweb.com:22')"/>
+   Preuve : failed to open stream
+
+============================================================
+

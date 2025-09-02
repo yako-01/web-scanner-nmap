@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+  flask_project:
+    build: .
+    container_name: flask_project_container
+    image: flask_project-flask_project
+    ports:
+      - "5003:5000"
+    volumes:
+      - ./reports:/app/reports
+      - ./intermediate:/app/intermediate
+    environment:
+      - FLASK_ENV=development
+    restart: unless-stopped

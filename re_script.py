@@ -12,7 +12,7 @@ nom_domaine = sys.argv[1].strip()
 fichier_json = sys.argv[2].strip()
 fichier_sortie = sys.argv[3].strip()
 
-# === Charger le rapport JSON généré par ZAP ===
+#charger le rapport json généré par zap
 try:
     with open(fichier_json, "r", encoding="utf-8") as f:
         data = json.load(f)
@@ -22,14 +22,14 @@ except Exception as e:
 
 alertes = data.get("alerts", [])
 
-# Compter les alertes par niveau de risque
+#compter les alertes par niveau de risque
 risk_counts = {"high": 0, "medium": 0, "low": 0, "informational": 0}
 for a in alertes:
     r = a.get("risk", "").lower()
     if r in risk_counts:
         risk_counts[r] += 1
 
-# === Regrouper les alertes par type (nom), uniquement High et Medium ===
+#regrouper les alertes par type (nom), uniquement High et Medium ===
 groupes = defaultdict(list)
 
 for alerte in alertes:
@@ -39,16 +39,15 @@ for alerte in alertes:
     nom = alerte.get("alert", "Sans titre")
     groupes[nom].append(alerte)
 
-# === Écrire le rapport final regroupé ===
+#écrire le rapport final regroupé
 try:
-    # Crear el directorio reports si no existe
     import os
     output_dir = os.path.dirname(fichier_sortie)
     if output_dir and not os.path.exists(output_dir):
         os.makedirs(output_dir, exist_ok=True)
     
     with open(fichier_sortie, "w", encoding="utf-8") as out:
-        # En-tête du rapport
+        #en-tête du rapport
         now_str = datetime.utcnow().strftime("%Y-%m-%d %H:%M:%S UTC")
         out.write("="*60 + "\n")
         out.write("RAPPORT ZAP REGROUPÉ\n")
