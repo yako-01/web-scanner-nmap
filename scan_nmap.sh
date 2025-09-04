@@ -70,7 +70,7 @@ else
     echo "Error: No se pudo crear el fichero intermedio"
 fi
 
-python3 rapport_nmap.py "$INTERMEDIATE_FILE"
+python3 generation_rapport.py "$INTERMEDIATE_FILE"
 
 {
  echo "============================================================="

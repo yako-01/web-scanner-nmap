@@ -2,15 +2,15 @@
 =========== RAPPORT D'ANALYSE COMPLÈTE AVEC NMAP ============
 =============================================================
 Cible : testphp.vulnweb.com
-Date : Tue Sep  2 09:36:17 UTC 2025
+Date : Thu Sep  4 16:55:03 UTC 2025
 
 ========= 1. RÉSOLUTION DNS – ADRESSES IP ASSOCIÉES =========
 Adresse IP résolue : 44.228.249.3
 
 ====== 2. ANALYSE DES PORTS VULNÉRABLES (TCP) ==============
-Starting Nmap 7.95 ( https://nmap.org ) at 2025-09-02 09:32 UTC
+Starting Nmap 7.95 ( https://nmap.org ) at 2025-09-04 16:51 UTC
 Nmap scan report for testphp.vulnweb.com (44.228.249.3)
-Host is up (0.0015s latency).
+Host is up (0.0022s latency).
 rDNS record for 44.228.249.3: ec2-44-228-249-3.us-west-2.compute.amazonaws.com
 
 PORT      STATE    SERVICE
@@ -37,12 +37,12 @@ PORT      STATE    SERVICE
 8443/tcp  filtered https-alt
 27017/tcp filtered mongod
 
-Nmap done: 1 IP address (1 host up) scanned in 1.50 seconds
+Nmap done: 1 IP address (1 host up) scanned in 1.48 seconds
 
 ======= 3. DÉTECTION DES SERVICES ET VERSIONS (-sV) ========
-Starting Nmap 7.95 ( https://nmap.org ) at 2025-09-02 09:32 UTC
+Starting Nmap 7.95 ( https://nmap.org ) at 2025-09-04 16:51 UTC
 Nmap scan report for testphp.vulnweb.com (44.228.249.3)
-Host is up (0.0030s latency).
+Host is up (0.00092s latency).
 rDNS record for 44.228.249.3: ec2-44-228-249-3.us-west-2.compute.amazonaws.com
 
 PORT      STATE    SERVICE       VERSION
@@ -69,7 +69,7 @@ PORT      STATE    SERVICE       VERSION
 8443/tcp  filtered https-alt
 27017/tcp filtered mongod
 1 service unrecognized despite returning data. If you know the service/version, please submit the following fingerprint at https://nmap.org/cgi-bin/submit.cgi?new-service :
-SF-Port80-TCP:V=7.95%I=7%D=9/2%Time=68B6B9CE%P=aarch64-unknown-linux-gnu%r
+SF-Port80-TCP:V=7.95%I=7%D=9/4%Time=68B9C3A4%P=aarch64-unknown-linux-gnu%r
 SF:(GetRequest,C2,"HTTP/1\.0\x20403\x20connecting\x20to\x20:80:\x20connect
 SF:ing\x20to\x20:80:\x20dial\x20tcp\x20:80:\x20connect:\x20connection\x20r
 SF:efused\r\nConnection:\x20close\r\n\r\nconnecting\x20to\x20:80:\x20conne
@@ -102,7 +102,7 @@ SF:5\x96\\xc8w\\x9b\\xe6\\xc4\\xdb<=\\xdbo\\xef\\x10n\\x00\\x00\(\\x00\\x1
 SF:6\\x00\\x13\\x00\"");
 
 Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
-Nmap done: 1 IP address (1 host up) scanned in 200.42 seconds
+Nmap done: 1 IP address (1 host up) scanned in 200.32 seconds
 
 ========== 4. DÉTECTION DE FIREWALL / FILTRAGE ==============
 Nmap scan report for testphp.vulnweb.com (44.228.249.3)
@@ -131,13 +131,13 @@ PORT      STATE    SERVICE
 27017/tcp filtered mongod
 
 ========== 5. SCAN RAPIDE DES PORTS COMMUNS ================
-Starting Nmap 7.95 ( https://nmap.org ) at 2025-09-02 09:36 UTC
+Starting Nmap 7.95 ( https://nmap.org ) at 2025-09-04 16:55 UTC
 Nmap scan report for testphp.vulnweb.com (44.228.249.3)
-Host is up (0.00053s latency).
+Host is up (0.00038s latency).
 rDNS record for 44.228.249.3: ec2-44-228-249-3.us-west-2.compute.amazonaws.com
 Not shown: 98 filtered tcp ports (no-response)
 PORT    STATE SERVICE
 80/tcp  open  http
 443/tcp open  https
 
-Nmap done: 1 IP address (1 host up) scanned in 1.84 seconds
+Nmap done: 1 IP address (1 host up) scanned in 1.81 seconds

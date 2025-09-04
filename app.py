@@ -133,10 +133,81 @@ def run_scan_async(scan_id, link):
                 scan_status[scan_id]['error'] = scan_status[scan_id]['message']
                 return
 
+            # Generar DOCX final con las 3 tablas rellenadas
+            """try:
+                from generation_rapport import remplir_tableaux_zap
+                from generation_rapport import remplir_tableau_ports
+                import shutil
+                
+                # Crear nombre para el DOCX final
+                timestamp = datetime.now().strftime("%d%m%Y_%H%M%S")
+                final_docx = f"rapport_complet_{timestamp}.docx"
+                final_path = os.path.join('reports', final_docx)
+                
+                # Copiar template
+                template_path = "./rapport_template2.docx"
+                if os.path.exists(template_path):
+                    shutil.copy2(template_path, final_path)
+                    
+                    # Rellenar tabla de puertos Nmap
+                    from generation_rapport import remplir_tableau_ports
+                    nmap_file = os.path.join('reports', results['nmap'])
+                    if os.path.exists(nmap_file):
+                        # Extraer datos Nmap del archivo generado
+                        nmap_data = {'OPEN_PORTS': [], 'FILTERED_PORTS': [], 'CLOSED_PORTS': []}
+                        # Por ahora datos vacíos, se pueden extraer después si es necesario
+                        remplir_tableau_ports(final_path, final_path, nmap_data)
+                    
+                    # Rellenar tablas ZAP
+                    zap_file = os.path.join('reports', results['zap'])
+                    if os.path.exists(zap_file):
+                        remplir_tableaux_zap(final_path, zap_file)
+                    
+                    # Solo mostrar el DOCX final
+                    scan_status[scan_id]['filenames'] = [final_docx]
+                    scan_status[scan_id]['message'] = 'Rapport complet DOCX généré avec succès'
+                else:
+                    # Fallback: mostrar archivos originales
+                    scan_status[scan_id]['filenames'] = [name for name in [results['nmap'], results['zap']] if name]
+                    scan_status[scan_id]['message'] = 'Analyses Nmap et ZAP terminées'
+                    
+            except Exception as e:
+                print(f"Erreur lors de la génération du DOCX final: {e}")
+                # Fallback: mostrar archivos originales
+                scan_status[scan_id]['filenames'] = [name for name in [results['nmap'], results['zap']] if name]
+                scan_status[scan_id]['message'] = 'Analyses Nmap et ZAP terminées'
+"""
+
+            import traceback
+
+            try: 
+                from generation_rapport import remplir_tableaux_zap
+                with open("./intermediate/ultimo_output.txt") as f:
+                    output_file = f.read().strip()
+                    print(f"Archivo DOCX original: {output_file}")  # DEBUG
+
+                    zap_file = os.path.join('reports', results['zap'])
+                    print(f"Archivo ZAP: {zap_file}")  # DEBUG
+
+                    if os.path.exists(zap_file):
+                        remplir_tableaux_zap(output_file, zap_file)
+                    else:
+                        print("El archivo ZAP no existe")
+
+                    # Solo mostrar el DOCX final
+                    scan_status[scan_id]['filenames'] = [os.path.basename(output_file)]
+                    scan_status[scan_id]['message'] = 'Rapport complet DOCX généré avec succès'
+
+            except Exception as e:
+                print(f"Erreur lors de la génération du DOCX final: {e}")
+                traceback.print_exc()  # <-- muestra el error completo
+                # Fallback: mostrar archivos originales
+                scan_status[scan_id]['filenames'] = [name for name in [results['nmap'], results['zap']] if name]
+                scan_status[scan_id]['message'] = 'Analyses Nmap et ZAP terminées'
+
+
             scan_status[scan_id]['status'] = 'completed'
             scan_status[scan_id]['progress'] = 100
-            scan_status[scan_id]['message'] = 'Analyses Nmap et ZAP terminées'
-            scan_status[scan_id]['filenames'] = [name for name in [results['nmap'], results['zap']] if name]
             return
 
         #vérifiez que le script existe et dispose des permis
@@ -194,9 +265,18 @@ def run_scan_async(scan_id, link):
                 #vérifiez que le fichier n'est pas vide
                 if os.path.getsize(file_path) > 0:
                     #print(f"[DEBUG] run_scan_async -> fichier valide, size={os.path.getsize(file_path)} bytes")
+                    
+                    # Si es ZAP, rellenar las tablas ZAP en el DOCX existente
+                    if scan_type == 'zap':
+                        try:
+                            from generation_rapport import remplir_tableaux_zap
+                            remplir_tableaux_zap(file_path, file_path)
+                            scan_status[scan_id]['message'] = "Rapport ZAP DOCX généré avec succès"
+                        except Exception as e:
+                            print(f"Erreur lors du remplissage des tableaux ZAP: {e}")
+                    
                     scan_status[scan_id]['status'] = 'completed'
                     scan_status[scan_id]['progress'] = 100
-                    scan_status[scan_id]['message'] = "L'analyse a été effectuée avec succès"
                     scan_status[scan_id]['filename'] = os.path.basename(file_path)
                     #print(f"[DEBUG] run_scan_async -> filename final (basename): {scan_status[scan_id]['filename']}")
                 else:
@@ -244,10 +324,9 @@ def check_status(scan_id):
     if status['status'] == 'running' and status['progress'] < 99:
         if status['type'] == 'nmap':
             status['progress'] = min(status['progress'] + 5, 99)
-        elif status['type'] == 'zap':
+        else:
             status['progress'] = min(status['progress'] + 2, 99)
-        else:  # both
-            status['progress'] = min(status['progress'] + 3, 99)
+
 
     return jsonify(status)
 
