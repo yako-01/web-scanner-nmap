@@ -33,7 +33,6 @@ PORT_SERVICE_MAP = {
     "8443": "HTTPS Proxy",
     "27017": "MongoDB",
 }
-dict = {}
 
 def completar_closed_ports(intermediate_file, ports_list):
     """
@@ -60,10 +59,10 @@ def completar_closed_ports(intermediate_file, ports_list):
     # Pasar puertos abiertos a int
     open_ports = [int(p) for p in data.get("OPEN_PORTS", []) if p.isdigit()]
 
-    filtered_ports = [int(p) for p in data.get("FILTERED_PORTS", []) if p.isdigit()]
+    #filtered_ports = [int(p) for p in data.get("FILTERED_PORTS", []) if p.isdigit()]
 
     # Calcular cerrados como diferencia
-    closed_ports = [str(p) for p in ports_list if p not in (open_ports and filtered_ports)]
+    closed_ports = [str(p) for p in ports_list if p not in open_ports]
 
     # Rellenar en data
     data["CLOSED_PORTS"] = closed_ports
@@ -96,12 +95,12 @@ def remplir_tableau_ports(docx_template, output_docx, data):
                 row_cells[1].text = get_service_name(port)
                 row_cells[2].text = "Ouvert"
             
-            for port in data.get("FILTERED_PORTS", []):
+            """for port in data.get("FILTERED_PORTS", []):
                 row_cells = table.add_row().cells
                 row_cells[0].text = port
                 row_cells[1].text = get_service_name(port)
                 row_cells[2].text = "Filtré"
-
+            """
             # Añadir filas de puertos cerrados
             for port in data.get("CLOSED_PORTS", []):
                 row_cells = table.add_row().cells
@@ -110,7 +109,7 @@ def remplir_tableau_ports(docx_template, output_docx, data):
                 row_cells[2].text = "Fermé"
 
     doc.save(output_docx)
-    #print(f"Documento generado: {output_docx}")
+
 
 def extract_scan_id(filename: str) -> str:
     """
@@ -134,7 +133,7 @@ remplir_tableau_ports("./rapport_template.docx", output_file, resultado)
 
 
 
-def tags_valors(intermediate_file, ):
+def tags_valors(intermediate_file):
     target = ""
     with open(intermediate_file, "r", encoding="utf-8", errors="ignore") as f:
         for line in f:
@@ -146,7 +145,7 @@ def tags_valors(intermediate_file, ):
                 break
 
     info = {
-        "ENTREPRISE": "",
+        "ENTREPRISE": "aaaa",
         "DATE": datetime.datetime.now().strftime("%d/%m/%Y"),
         "SITE": target
     }
@@ -161,7 +160,7 @@ def find_latest_zap_report() -> str | None:
     for name in os.listdir(reports_dir):
         if not name.endswith(".txt"):
             continue
-        if name.startswith("rapport_zap_") or name == "rapport_zap_example.txt":
+        if name.startswith("rapport_zap_"):
             full = os.path.join(reports_dir, name)
             try:
                 mtime = os.path.getmtime(full)
@@ -217,9 +216,7 @@ def replace_tags_in_docx(template_path: str, output_path: str, replacements: dic
     doc.save(output_path)
 
 
-# ==========================
-#        ZAP PARSER
-# ==========================
+
 def parse_zap_report(report_path: str) -> List[Dict[str, str | int]]:
     """
     Parsea un informe ZAP de texto (formato similar a reports/rapport_zap_example.txt)
@@ -485,12 +482,45 @@ def remplir_tableaux_zap(output_docx: str, zap_report_path: str | None = None):
     print(f"DEBUG: Tablas ZAP rellenadas en {output_docx}")
 
 
-#remplir_tableaux_zap("./reports/informe_zap.docx", "./reports/rapport_zap_example.txt")
 
-def add_page_break_after_table(doc):
-    last_paragraph = doc.add_paragraph()
-    run = last_paragraph.add_run()
-    run.add_break(WD_BREAK.PAGE)
+
+def replace_text_in_paragraph(paragraph, replacements):
+    for key, val in replacements.items():
+        tag = f"*{key}*"
+        if tag in paragraph.text:
+            for run in paragraph.runs:
+                if tag in run.text:
+                    run.text = run.text.replace(tag, str(val))
+
+def replace_tags_in_docx(template_path, output_path, replacements):
+    doc = Document(template_path)
+
+    def replace_text_in_table(table):
+        for row in table.rows:
+            for cell in row.cells:
+                for paragraph in cell.paragraphs:
+                    replace_text_in_paragraph(paragraph, replacements)
+
+    # Reemplazo en párrafos
+    for paragraph in doc.paragraphs:
+        replace_text_in_paragraph(paragraph, replacements)
+
+    # Reemplazo en tablas
+    for table in doc.tables:
+        replace_text_in_table(table)
+
+    # Reemplazo en cabeceras y pies
+    for section in doc.sections:
+        for paragraph in section.header.paragraphs:
+            replace_text_in_paragraph(paragraph, replacements)
+        for paragraph in section.footer.paragraphs:
+            replace_text_in_paragraph(paragraph, replacements)
+
+    doc.save(output_path)
+
+
+
+#remplir_tableaux_zap("./reports/informe_zap.docx", "./reports/rapport_zap_example.txt")
     
 def generar_informe(intermediate_file):
     scan_id = extract_scan_id(intermediate_file)
@@ -499,6 +529,9 @@ def generar_informe(intermediate_file):
     
     datos_nmap = completar_closed_ports(intermediate_file, PORTS)
     remplir_tableau_ports(template_path, output_file, datos_nmap)
+    replace_tags_in_docx(output_file, output_file, tags_valors(intermediate_file))
+
+
     
     return output_file  # ⬅ devolvemos el archivo generado
 

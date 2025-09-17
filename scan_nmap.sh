@@ -35,7 +35,7 @@ fi
 IP_LIST=$(nslookup "$CIBLE" 2>/dev/null | grep "Address:" | tail -n +2 | awk '{print $2}')
 OPEN_PORTS=$(printf "%s\n" "$NMAP_ST_OUTPUT" | awk '/^[0-9]+\/[a-zA-Z]+/ && $2=="open" {split($1,a,"/"); print a[1]}' | sort -n | uniq)
 CLOSED_PORTS=$(printf "%s\n" "$NMAP_ST_OUTPUT" | awk '/^[0-9]+\/[a-zA-Z]+/ && $2=="closed" {split($1,a,"/"); print a[1]}' | sort -n | uniq)
-FILTERED_PORTS=$(printf "%s\n" "$NMAP_ST_OUTPUT" | awk '/^[0-9]+\/[a-zA-Z]+/ && $2=="filtered" {split($1,a,"/"); print a[1]}' | sort -n | uniq)
+#FILTERED_PORTS=$(printf "%s\n" "$NMAP_ST_OUTPUT" | awk '/^[0-9]+\/[a-zA-Z]+/ && $2=="filtered" {split($1,a,"/"); print a[1]}' | sort -n | uniq)
 SERVICE_VERSIONS=$(printf "%s\n" "$NMAP_SV_OUTPUT" | awk '/^[0-9]+\/[a-zA-Z]+/ && $2=="open" {svc=$3; ver=""; if (NF>=4) {for(i=4;i<=NF;i++){ver=ver $i " "}} gsub(/^\s+|\s+$/, "", ver); print $1 " " svc " " ver}' | sed 's/\s\+$//')
 
 # También hacer un escaneo rápido para detectar puertos comunes que podrían estar abiertos
@@ -56,8 +56,8 @@ ALL_OPEN_PORTS=$(printf "%s\n%s\n" "$OPEN_PORTS" "$FAST_OPEN_PORTS" | sort -n | 
   if [ -n "$ALL_OPEN_PORTS" ]; then echo "$ALL_OPEN_PORTS"; fi
   echo "CLOSED_PORTS:"
   if [ -n "$CLOSED_PORTS" ]; then echo "$CLOSED_PORTS"; fi
-  echo "FILTERED_PORTS:"
-  if [ -n "$FILTERED_PORTS" ]; then echo "$FILTERED_PORTS"; fi
+  #echo "FILTERED_PORTS:"
+  #if [ -n "$FILTERED_PORTS" ]; then echo "$FILTERED_PORTS"; fi
   echo "SERVICE_VERSIONS:"
   if [ -n "$SERVICE_VERSIONS" ]; then echo "$SERVICE_VERSIONS"; fi
 } > "$INTERMEDIATE_FILE"

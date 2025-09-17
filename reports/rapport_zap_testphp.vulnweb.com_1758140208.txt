@@ -2,9 +2,9 @@
 RAPPORT ZAP REGROUPÉ
 ============================================================
 Cible : http://testphp.vulnweb.com
-Date : 2025-09-04 17:08:32 UTC
+Date : 2025-09-17 20:35:00 UTC
 ------------------------------------------------------------
-Résumé des risques -> High: 33 | Medium: 134 | Low: 204 | Informational: 270
+Résumé des risques -> High: 30 | Medium: 134 | Low: 204 | Informational: 267
 
 === Missing Anti-clickjacking Header ===
 Risque : Medium | Confiance : Medium
@@ -17,93 +17,93 @@ Modern Web browsers support the Content-Security-Policy and X-Frame-Options HTTP
 If you expect the page to be framed only by pages on your server (e.g. it's part of a FRAMESET) then you'll want to use SAMEORIGIN, otherwise if you never expect the page to be framed, you should use DENY. Alternatively consider implementing Content Security Policy's "frame-ancestors" directive.
 
 Cas détectés (44) :
-1. URL : http://testphp.vulnweb.com
+1. URL : http://testphp.vulnweb.com/index.php
    Paramètre : x-frame-options
-2. URL : http://testphp.vulnweb.com/disclaimer.php
+2. URL : http://testphp.vulnweb.com
    Paramètre : x-frame-options
-3. URL : http://testphp.vulnweb.com/cart.php
+3. URL : http://testphp.vulnweb.com/Mod_Rewrite_Shop/
    Paramètre : x-frame-options
-4. URL : http://testphp.vulnweb.com/Mod_Rewrite_Shop/
+4. URL : http://testphp.vulnweb.com/categories.php
    Paramètre : x-frame-options
-5. URL : http://testphp.vulnweb.com/index.php
+5. URL : http://testphp.vulnweb.com/disclaimer.php
    Paramètre : x-frame-options
-6. URL : http://testphp.vulnweb.com/categories.php
+6. URL : http://testphp.vulnweb.com/artists.php
    Paramètre : x-frame-options
-7. URL : http://testphp.vulnweb.com/guestbook.php
+7. URL : http://testphp.vulnweb.com/cart.php
    Paramètre : x-frame-options
-8. URL : http://testphp.vulnweb.com/artists.php
+8. URL : http://testphp.vulnweb.com/guestbook.php
    Paramètre : x-frame-options
-9. URL : http://testphp.vulnweb.com/AJAX/index.php
+9. URL : http://testphp.vulnweb.com/login.php
    Paramètre : x-frame-options
-10. URL : http://testphp.vulnweb.com/hpp/
+10. URL : http://testphp.vulnweb.com/AJAX/index.php
    Paramètre : x-frame-options
-11. URL : http://testphp.vulnweb.com/login.php
+11. URL : http://testphp.vulnweb.com/hpp/
    Paramètre : x-frame-options
-12. URL : http://testphp.vulnweb.com/listproducts.php?cat=2
+12. URL : http://testphp.vulnweb.com/guestbook.php
    Paramètre : x-frame-options
-13. URL : http://testphp.vulnweb.com/artists.php?artist=1
+13. URL : http://testphp.vulnweb.com/Mod_Rewrite_Shop/Details/color-printer/3/
    Paramètre : x-frame-options
-14. URL : http://testphp.vulnweb.com/search.php?test=query
+14. URL : http://testphp.vulnweb.com/artists.php?artist=3
    Paramètre : x-frame-options
 15. URL : http://testphp.vulnweb.com/listproducts.php?cat=1
    Paramètre : x-frame-options
 16. URL : http://testphp.vulnweb.com/listproducts.php?cat=3
    Paramètre : x-frame-options
-17. URL : http://testphp.vulnweb.com/artists.php?artist=2
+17. URL : http://testphp.vulnweb.com/Mod_Rewrite_Shop/Details/web-camera-a4tech/2/
    Paramètre : x-frame-options
-18. URL : http://testphp.vulnweb.com/artists.php?artist=3
+18. URL : http://testphp.vulnweb.com/artists.php?artist=1
    Paramètre : x-frame-options
-19. URL : http://testphp.vulnweb.com/Mod_Rewrite_Shop/Details/web-camera-a4tech/2/
+19. URL : http://testphp.vulnweb.com/listproducts.php?cat=4
    Paramètre : x-frame-options
-20. URL : http://testphp.vulnweb.com/listproducts.php?cat=4
+20. URL : http://testphp.vulnweb.com/search.php?test=query
    Paramètre : x-frame-options
-21. URL : http://testphp.vulnweb.com/Mod_Rewrite_Shop/Details/color-printer/3/
+21. URL : http://testphp.vulnweb.com/listproducts.php?cat=2
    Paramètre : x-frame-options
 22. URL : http://testphp.vulnweb.com/Mod_Rewrite_Shop/Details/network-attached-storage-dlink/1/
    Paramètre : x-frame-options
-23. URL : http://testphp.vulnweb.com/hpp/?pp=12
+23. URL : http://testphp.vulnweb.com/artists.php?artist=2
    Paramètre : x-frame-options
-24. URL : http://testphp.vulnweb.com/guestbook.php
+24. URL : http://testphp.vulnweb.com/signup.php
    Paramètre : x-frame-options
-25. URL : http://testphp.vulnweb.com/Mod_Rewrite_Shop/BuyProduct-2/
+25. URL : http://testphp.vulnweb.com/listproducts.php?artist=1
    Paramètre : x-frame-options
-26. URL : http://testphp.vulnweb.com/product.php?pic=6
+26. URL : http://testphp.vulnweb.com/hpp/?pp=12
    Paramètre : x-frame-options
-27. URL : http://testphp.vulnweb.com/signup.php
+27. URL : http://testphp.vulnweb.com/product.php?pic=6
    Paramètre : x-frame-options
-28. URL : http://testphp.vulnweb.com/listproducts.php?artist=1
+28. URL : http://testphp.vulnweb.com/listproducts.php?artist=2
    Paramètre : x-frame-options
-29. URL : http://testphp.vulnweb.com/product.php?pic=1
+29. URL : http://testphp.vulnweb.com/Mod_Rewrite_Shop/BuyProduct-1/
    Paramètre : x-frame-options
-30. URL : http://testphp.vulnweb.com/Mod_Rewrite_Shop/RateProduct-2.html
+30. URL : http://testphp.vulnweb.com/listproducts.php?artist=3
    Paramètre : x-frame-options
-31. URL : http://testphp.vulnweb.com/listproducts.php?artist=2
+31. URL : http://testphp.vulnweb.com/product.php?pic=2
    Paramètre : x-frame-options
-32. URL : http://testphp.vulnweb.com/listproducts.php?artist=3
+32. URL : http://testphp.vulnweb.com/product.php?pic=1
    Paramètre : x-frame-options
-33. URL : http://testphp.vulnweb.com/product.php?pic=2
+33. URL : http://testphp.vulnweb.com/Mod_Rewrite_Shop/BuyProduct-3/
    Paramètre : x-frame-options
-34. URL : http://testphp.vulnweb.com/Mod_Rewrite_Shop/RateProduct-1.html
+34. URL : http://testphp.vulnweb.com/Mod_Rewrite_Shop/RateProduct-3.html
    Paramètre : x-frame-options
-35. URL : http://testphp.vulnweb.com/Mod_Rewrite_Shop/BuyProduct-3/
+35. URL : http://testphp.vulnweb.com/Mod_Rewrite_Shop/BuyProduct-2/
    Paramètre : x-frame-options
-36. URL : http://testphp.vulnweb.com/Mod_Rewrite_Shop/BuyProduct-1/
+36. URL : http://testphp.vulnweb.com/Mod_Rewrite_Shop/RateProduct-2.html
    Paramètre : x-frame-options
-37. URL : http://testphp.vulnweb.com/product.php?pic=3
+37. URL : http://testphp.vulnweb.com/Mod_Rewrite_Shop/RateProduct-1.html
    Paramètre : x-frame-options
-38. URL : http://testphp.vulnweb.com/product.php?pic=7
+38. URL : http://testphp.vulnweb.com/product.php?pic=4
    Paramètre : x-frame-options
-39. URL : http://testphp.vulnweb.com/product.php?pic=4
+39. URL : http://testphp.vulnweb.com/product.php?pic=3
    Paramètre : x-frame-options
 40. URL : http://testphp.vulnweb.com/product.php?pic=5
    Paramètre : x-frame-options
-41. URL : http://testphp.vulnweb.com/Mod_Rewrite_Shop/RateProduct-3.html
+41. URL : http://testphp.vulnweb.com/product.php?pic=7
    Paramètre : x-frame-options
-42. URL : http://testphp.vulnweb.com/hpp/params.php?p=valid&pp=12
+42. URL : http://testphp.vulnweb.com/secured/newuser.php
    Paramètre : x-frame-options
-43. URL : http://testphp.vulnweb.com/cart.php
+43. URL : http://testphp.vulnweb.com/hpp/params.php?p=valid&pp=12
    Paramètre : x-frame-options
-44. URL : http://testphp.vulnweb.com/secured/newuser.php
+44. URL : http://testphp.vulnweb.com/cart.php
    Paramètre : x-frame-options
 
 ============================================================
@@ -118,99 +118,99 @@ Solution :
 Ensure that your web server, application server, load balancer, etc. is configured to set the Content-Security-Policy header.
 
 Cas détectés (48) :
-1. URL : http://testphp.vulnweb.com/robots.txt
+1. URL : http://testphp.vulnweb.com/sitemap.xml
    Paramètre : 
-2. URL : http://testphp.vulnweb.com/sitemap.xml
+2. URL : http://testphp.vulnweb.com/robots.txt
    Paramètre : 
-3. URL : http://testphp.vulnweb.com
+3. URL : http://testphp.vulnweb.com/Mod_Rewrite_Shop/
    Paramètre : 
-4. URL : http://testphp.vulnweb.com/Mod_Rewrite_Shop/
+4. URL : http://testphp.vulnweb.com
    Paramètre : 
-5. URL : http://testphp.vulnweb.com/disclaimer.php
+5. URL : http://testphp.vulnweb.com/categories.php
    Paramètre : 
-6. URL : http://testphp.vulnweb.com/cart.php
+6. URL : http://testphp.vulnweb.com/index.php
    Paramètre : 
-7. URL : http://testphp.vulnweb.com/hpp/
+7. URL : http://testphp.vulnweb.com/disclaimer.php
    Paramètre : 
-8. URL : http://testphp.vulnweb.com/index.php
+8. URL : http://testphp.vulnweb.com/artists.php
    Paramètre : 
-9. URL : http://testphp.vulnweb.com/guestbook.php
+9. URL : http://testphp.vulnweb.com/privacy.php
    Paramètre : 
-10. URL : http://testphp.vulnweb.com/categories.php
+10. URL : http://testphp.vulnweb.com/high
    Paramètre : 
-11. URL : http://testphp.vulnweb.com/AJAX/index.php
+11. URL : http://testphp.vulnweb.com/guestbook.php
    Paramètre : 
-12. URL : http://testphp.vulnweb.com/artists.php
+12. URL : http://testphp.vulnweb.com/cart.php
    Paramètre : 
-13. URL : http://testphp.vulnweb.com/privacy.php
+13. URL : http://testphp.vulnweb.com/hpp/
    Paramètre : 
-14. URL : http://testphp.vulnweb.com/high
+14. URL : http://testphp.vulnweb.com/AJAX/index.php
    Paramètre : 
-15. URL : http://testphp.vulnweb.com/listproducts.php?cat=2
+15. URL : http://testphp.vulnweb.com/login.php
    Paramètre : 
-16. URL : http://testphp.vulnweb.com/login.php
+16. URL : http://testphp.vulnweb.com/Mod_Rewrite_Shop/Details/color-printer/3/
    Paramètre : 
-17. URL : http://testphp.vulnweb.com/search.php?test=query
+17. URL : http://testphp.vulnweb.com/artists.php?artist=3
    Paramètre : 
-18. URL : http://testphp.vulnweb.com/listproducts.php?cat=3
+18. URL : http://testphp.vulnweb.com/guestbook.php
    Paramètre : 
-19. URL : http://testphp.vulnweb.com/artists.php?artist=1
+19. URL : http://testphp.vulnweb.com/Mod_Rewrite_Shop/Details/web-camera-a4tech/2/
    Paramètre : 
-20. URL : http://testphp.vulnweb.com/Mod_Rewrite_Shop/Details/web-camera-a4tech/2/
+20. URL : http://testphp.vulnweb.com/listproducts.php?cat=1
    Paramètre : 
-21. URL : http://testphp.vulnweb.com/artists.php?artist=3
+21. URL : http://testphp.vulnweb.com/listproducts.php?cat=3
    Paramètre : 
-22. URL : http://testphp.vulnweb.com/listproducts.php?cat=1
+22. URL : http://testphp.vulnweb.com/artists.php?artist=1
    Paramètre : 
-23. URL : http://testphp.vulnweb.com/artists.php?artist=2
+23. URL : http://testphp.vulnweb.com/listproducts.php?cat=4
    Paramètre : 
-24. URL : http://testphp.vulnweb.com/listproducts.php?cat=4
+24. URL : http://testphp.vulnweb.com/search.php?test=query
    Paramètre : 
-25. URL : http://testphp.vulnweb.com/Mod_Rewrite_Shop/Details/color-printer/3/
+25. URL : http://testphp.vulnweb.com/Mod_Rewrite_Shop/Details/network-attached-storage-dlink/1/
    Paramètre : 
-26. URL : http://testphp.vulnweb.com/Mod_Rewrite_Shop/Details/network-attached-storage-dlink/1/
+26. URL : http://testphp.vulnweb.com/listproducts.php?cat=2
    Paramètre : 
-27. URL : http://testphp.vulnweb.com/hpp/?pp=12
+27. URL : http://testphp.vulnweb.com/artists.php?artist=2
    Paramètre : 
-28. URL : http://testphp.vulnweb.com/Mod_Rewrite_Shop/BuyProduct-2/
+28. URL : http://testphp.vulnweb.com/signup.php
    Paramètre : 
-29. URL : http://testphp.vulnweb.com/guestbook.php
+29. URL : http://testphp.vulnweb.com/listproducts.php?artist=1
    Paramètre : 
-30. URL : http://testphp.vulnweb.com/product.php?pic=6
+30. URL : http://testphp.vulnweb.com/hpp/?pp=12
    Paramètre : 
-31. URL : http://testphp.vulnweb.com/signup.php
+31. URL : http://testphp.vulnweb.com/product.php?pic=6
    Paramètre : 
-32. URL : http://testphp.vulnweb.com/Mod_Rewrite_Shop/RateProduct-2.html
+32. URL : http://testphp.vulnweb.com/listproducts.php?artist=2
    Paramètre : 
-33. URL : http://testphp.vulnweb.com/listproducts.php?artist=1
+33. URL : http://testphp.vulnweb.com/Mod_Rewrite_Shop/BuyProduct-1/
    Paramètre : 
-34. URL : http://testphp.vulnweb.com/product.php?pic=1
+34. URL : http://testphp.vulnweb.com/listproducts.php?artist=3
    Paramètre : 
-35. URL : http://testphp.vulnweb.com/listproducts.php?artist=2
+35. URL : http://testphp.vulnweb.com/Mod_Rewrite_Shop/BuyProduct-3/
    Paramètre : 
-36. URL : http://testphp.vulnweb.com/listproducts.php?artist=3
+36. URL : http://testphp.vulnweb.com/product.php?pic=2
    Paramètre : 
-37. URL : http://testphp.vulnweb.com/Mod_Rewrite_Shop/RateProduct-1.html
+37. URL : http://testphp.vulnweb.com/product.php?pic=1
    Paramètre : 
-38. URL : http://testphp.vulnweb.com/product.php?pic=2
+38. URL : http://testphp.vulnweb.com/Mod_Rewrite_Shop/RateProduct-2.html
    Paramètre : 
-39. URL : http://testphp.vulnweb.com/Mod_Rewrite_Shop/BuyProduct-3/
+39. URL : http://testphp.vulnweb.com/Mod_Rewrite_Shop/BuyProduct-2/
    Paramètre : 
-40. URL : http://testphp.vulnweb.com/Mod_Rewrite_Shop/BuyProduct-1/
+40. URL : http://testphp.vulnweb.com/Mod_Rewrite_Shop/RateProduct-3.html
    Paramètre : 
-41. URL : http://testphp.vulnweb.com/product.php?pic=3
+41. URL : http://testphp.vulnweb.com/Mod_Rewrite_Shop/RateProduct-1.html
    Paramètre : 
-42. URL : http://testphp.vulnweb.com/product.php?pic=5
+42. URL : http://testphp.vulnweb.com/product.php?pic=3
    Paramètre : 
-43. URL : http://testphp.vulnweb.com/Mod_Rewrite_Shop/RateProduct-3.html
+43. URL : http://testphp.vulnweb.com/product.php?pic=4
    Paramètre : 
-44. URL : http://testphp.vulnweb.com/product.php?pic=7
+44. URL : http://testphp.vulnweb.com/product.php?pic=5
    Paramètre : 
-45. URL : http://testphp.vulnweb.com/product.php?pic=4
+45. URL : http://testphp.vulnweb.com/product.php?pic=7
    Paramètre : 
-46. URL : http://testphp.vulnweb.com/hpp/params.php?p=valid&pp=12
+46. URL : http://testphp.vulnweb.com/secured/newuser.php
    Paramètre : 
-47. URL : http://testphp.vulnweb.com/secured/newuser.php
+47. URL : http://testphp.vulnweb.com/hpp/params.php?p=valid&pp=12
    Paramètre : 
 48. URL : http://testphp.vulnweb.com/cart.php
    Paramètre : 
@@ -258,88 +258,88 @@ Cas détectés (40) :
 1. URL : http://testphp.vulnweb.com
    Paramètre : 
    Preuve : <form action="search.php?test=query" method="post">
-2. URL : http://testphp.vulnweb.com/disclaimer.php
+2. URL : http://testphp.vulnweb.com/index.php
    Paramètre : 
    Preuve : <form action="search.php?test=query" method="post">
-3. URL : http://testphp.vulnweb.com/cart.php
+3. URL : http://testphp.vulnweb.com/categories.php
    Paramètre : 
    Preuve : <form action="search.php?test=query" method="post">
-4. URL : http://testphp.vulnweb.com/index.php
+4. URL : http://testphp.vulnweb.com/disclaimer.php
    Paramètre : 
    Preuve : <form action="search.php?test=query" method="post">
-5. URL : http://testphp.vulnweb.com/guestbook.php
+5. URL : http://testphp.vulnweb.com/artists.php
    Paramètre : 
-   Preuve : <form action="" method="post" name="faddentry">
-6. URL : http://testphp.vulnweb.com/artists.php
+   Preuve : <form action="search.php?test=query" method="post">
+6. URL : http://testphp.vulnweb.com/cart.php
    Paramètre : 
    Preuve : <form action="search.php?test=query" method="post">
 7. URL : http://testphp.vulnweb.com/guestbook.php
    Paramètre : 
-   Preuve : <form action="search.php?test=query" method="post">
-8. URL : http://testphp.vulnweb.com/categories.php
+   Preuve : <form action="" method="post" name="faddentry">
+8. URL : http://testphp.vulnweb.com/guestbook.php
    Paramètre : 
    Preuve : <form action="search.php?test=query" method="post">
-9. URL : http://testphp.vulnweb.com/listproducts.php?cat=2
-   Paramètre : 
-   Preuve : <form action="search.php?test=query" method="post">
-10. URL : http://testphp.vulnweb.com/search.php?test=query
-   Paramètre : 
-   Preuve : <form action="search.php?test=query" method="post">
-11. URL : http://testphp.vulnweb.com/login.php
+9. URL : http://testphp.vulnweb.com/login.php
    Paramètre : 
    Preuve : <form name="loginform" method="post" action="userinfo.php">
-12. URL : http://testphp.vulnweb.com/login.php
+10. URL : http://testphp.vulnweb.com/login.php
    Paramètre : 
    Preuve : <form action="search.php?test=query" method="post">
-13. URL : http://testphp.vulnweb.com/listproducts.php?cat=3
+11. URL : http://testphp.vulnweb.com/guestbook.php
+   Paramètre : 
+   Preuve : <form action="" method="post" name="faddentry">
+12. URL : http://testphp.vulnweb.com/artists.php?artist=3
    Paramètre : 
    Preuve : <form action="search.php?test=query" method="post">
-14. URL : http://testphp.vulnweb.com/artists.php?artist=1
+13. URL : http://testphp.vulnweb.com/listproducts.php?cat=1
    Paramètre : 
    Preuve : <form action="search.php?test=query" method="post">
-15. URL : http://testphp.vulnweb.com/artists.php?artist=3
+14. URL : http://testphp.vulnweb.com/guestbook.php
    Paramètre : 
    Preuve : <form action="search.php?test=query" method="post">
-16. URL : http://testphp.vulnweb.com/listproducts.php?cat=1
+15. URL : http://testphp.vulnweb.com/listproducts.php?cat=3
+   Paramètre : 
+   Preuve : <form action="search.php?test=query" method="post">
+16. URL : http://testphp.vulnweb.com/artists.php?artist=1
    Paramètre : 
    Preuve : <form action="search.php?test=query" method="post">
 17. URL : http://testphp.vulnweb.com/listproducts.php?cat=4
    Paramètre : 
    Preuve : <form action="search.php?test=query" method="post">
-18. URL : http://testphp.vulnweb.com/artists.php?artist=2
+18. URL : http://testphp.vulnweb.com/search.php?test=query
    Paramètre : 
    Preuve : <form action="search.php?test=query" method="post">
-19. URL : http://testphp.vulnweb.com/signup.php
+19. URL : http://testphp.vulnweb.com/listproducts.php?cat=2
+   Paramètre : 
+   Preuve : <form action="search.php?test=query" method="post">
+20. URL : http://testphp.vulnweb.com/artists.php?artist=2
+   Paramètre : 
+   Preuve : <form action="search.php?test=query" method="post">
+21. URL : http://testphp.vulnweb.com/signup.php
    Paramètre : 
    Preuve : <form name="form1" method="post" action="/secured/newuser.php">
-20. URL : http://testphp.vulnweb.com/product.php?pic=6
+22. URL : http://testphp.vulnweb.com/signup.php
+   Paramètre : 
+   Preuve : <form action="search.php?test=query" method="post">
+23. URL : http://testphp.vulnweb.com/listproducts.php?artist=1
+   Paramètre : 
+   Preuve : <form action="search.php?test=query" method="post">
+24. URL : http://testphp.vulnweb.com/product.php?pic=6
    Paramètre : 
    Preuve : <form name='f_addcart' method='POST' action='cart.php'>
-21. URL : http://testphp.vulnweb.com/product.php?pic=6
+25. URL : http://testphp.vulnweb.com/product.php?pic=6
    Paramètre : 
    Preuve : <form action="search.php?test=query" method="post">
-22. URL : http://testphp.vulnweb.com/guestbook.php
-   Paramètre : 
-   Preuve : <form action="" method="post" name="faddentry">
-23. URL : http://testphp.vulnweb.com/signup.php
+26. URL : http://testphp.vulnweb.com/listproducts.php?artist=2
    Paramètre : 
    Preuve : <form action="search.php?test=query" method="post">
-24. URL : http://testphp.vulnweb.com/listproducts.php?artist=1
+27. URL : http://testphp.vulnweb.com/listproducts.php?artist=3
    Paramètre : 
    Preuve : <form action="search.php?test=query" method="post">
-25. URL : http://testphp.vulnweb.com/product.php?pic=1
+28. URL : http://testphp.vulnweb.com/product.php?pic=1
    Paramètre : 
    Preuve : <form name='f_addcart' method='POST' action='cart.php'>
-26. URL : http://testphp.vulnweb.com/guestbook.php
-   Paramètre : 
-   Preuve : <form action="search.php?test=query" method="post">
-27. URL : http://testphp.vulnweb.com/product.php?pic=1
-   Paramètre : 
-   Preuve : <form action="search.php?test=query" method="post">
-28. URL : http://testphp.vulnweb.com/listproducts.php?artist=2
-   Paramètre : 
-   Preuve : <form action="search.php?test=query" method="post">
-29. URL : http://testphp.vulnweb.com/listproducts.php?artist=3
+29. URL : http://testphp.vulnweb.com/product.php?pic=1
    Paramètre : 
    Preuve : <form action="search.php?test=query" method="post">
 30. URL : http://testphp.vulnweb.com/product.php?pic=2
@@ -351,24 +351,24 @@ Cas détectés (40) :
 32. URL : http://testphp.vulnweb.com/product.php?pic=3
    Paramètre : 
    Preuve : <form name='f_addcart' method='POST' action='cart.php'>
-33. URL : http://testphp.vulnweb.com/product.php?pic=5
+33. URL : http://testphp.vulnweb.com/product.php?pic=3
+   Paramètre : 
+   Preuve : <form action="search.php?test=query" method="post">
+34. URL : http://testphp.vulnweb.com/product.php?pic=4
    Paramètre : 
    Preuve : <form name='f_addcart' method='POST' action='cart.php'>
-34. URL : http://testphp.vulnweb.com/product.php?pic=7
-   Paramètre : 
-   Preuve : <form name='f_addcart' method='POST' action='cart.php'>
-35. URL : http://testphp.vulnweb.com/product.php?pic=3
+35. URL : http://testphp.vulnweb.com/product.php?pic=4
    Paramètre : 
    Preuve : <form action="search.php?test=query" method="post">
 36. URL : http://testphp.vulnweb.com/product.php?pic=5
    Paramètre : 
+   Preuve : <form name='f_addcart' method='POST' action='cart.php'>
+37. URL : http://testphp.vulnweb.com/product.php?pic=5
+   Paramètre : 
    Preuve : <form action="search.php?test=query" method="post">
-37. URL : http://testphp.vulnweb.com/product.php?pic=4
+38. URL : http://testphp.vulnweb.com/product.php?pic=7
    Paramètre : 
    Preuve : <form name='f_addcart' method='POST' action='cart.php'>
-38. URL : http://testphp.vulnweb.com/product.php?pic=4
-   Paramètre : 
-   Preuve : <form action="search.php?test=query" method="post">
 39. URL : http://testphp.vulnweb.com/product.php?pic=7
    Paramètre : 
    Preuve : <form action="search.php?test=query" method="post">
@@ -416,14 +416,14 @@ When performing input validation, consider all potentially relevant properties, 
 Ensure that you perform input validation at well-defined interfaces within the application. This will help protect the application even if a component is reused or moved elsewhere.
 
 Cas détectés (19) :
-1. URL : http://testphp.vulnweb.com/guestbook.php
-   Paramètre : name
-   Payload : </strong><scrIpt>alert(1);</scRipt><strong>
-   Preuve : </strong><scrIpt>alert(1);</scRipt><strong>
-2. URL : http://testphp.vulnweb.com/secured/newuser.php
+1. URL : http://testphp.vulnweb.com/secured/newuser.php
    Paramètre : uuname
    Payload : </li><scrIpt>alert(1);</scRipt><li>
    Preuve : </li><scrIpt>alert(1);</scRipt><li>
+2. URL : http://testphp.vulnweb.com/guestbook.php
+   Paramètre : name
+   Payload : </strong><scrIpt>alert(1);</scRipt><strong>
+   Preuve : </strong><scrIpt>alert(1);</scRipt><strong>
 3. URL : http://testphp.vulnweb.com/search.php?test=%27%22%3CscrIpt%3Ealert%281%29%3B%3C%2FscRipt%3E
    Paramètre : test
    Payload : '"<scrIpt>alert(1);</scRipt>
@@ -448,34 +448,34 @@ Cas détectés (19) :
    Paramètre : urname
    Payload : </li><scrIpt>alert(1);</scRipt><li>
    Preuve : </li><scrIpt>alert(1);</scRipt><li>
-9. URL : http://testphp.vulnweb.com/artists.php?artist=%3CscrIpt%3Ealert%281%29%3B%3C%2FscRipt%3E
-   Paramètre : artist
-   Payload : <scrIpt>alert(1);</scRipt>
-   Preuve : <scrIpt>alert(1);</scRipt>
-10. URL : http://testphp.vulnweb.com/secured/newuser.php
+9. URL : http://testphp.vulnweb.com/secured/newuser.php
    Paramètre : ucc
    Payload : </li><scrIpt>alert(1);</scRipt><li>
    Preuve : </li><scrIpt>alert(1);</scRipt><li>
+10. URL : http://testphp.vulnweb.com/artists.php?artist=%3CscrIpt%3Ealert%281%29%3B%3C%2FscRipt%3E
+   Paramètre : artist
+   Payload : <scrIpt>alert(1);</scRipt>
+   Preuve : <scrIpt>alert(1);</scRipt>
 11. URL : http://testphp.vulnweb.com/hpp/params.php?p=%3CscrIpt%3Ealert%281%29%3B%3C%2FscRipt%3E&pp=12
    Paramètre : p
    Payload : <scrIpt>alert(1);</scRipt>
    Preuve : <scrIpt>alert(1);</scRipt>
-12. URL : http://testphp.vulnweb.com/listproducts.php?cat=%3CscrIpt%3Ealert%281%29%3B%3C%2FscRipt%3E
-   Paramètre : cat
-   Payload : <scrIpt>alert(1);</scRipt>
-   Preuve : <scrIpt>alert(1);</scRipt>
-13. URL : http://testphp.vulnweb.com/product.php?pic=%3CscrIpt%3Ealert%281%29%3B%3C%2FscRipt%3E
-   Paramètre : pic
-   Payload : <scrIpt>alert(1);</scRipt>
-   Preuve : <scrIpt>alert(1);</scRipt>
-14. URL : http://testphp.vulnweb.com/listproducts.php?artist=%3CscrIpt%3Ealert%281%29%3B%3C%2FscRipt%3E
-   Paramètre : artist
-   Payload : <scrIpt>alert(1);</scRipt>
-   Preuve : <scrIpt>alert(1);</scRipt>
-15. URL : http://testphp.vulnweb.com/secured/newuser.php
+12. URL : http://testphp.vulnweb.com/secured/newuser.php
    Paramètre : uemail
    Payload : </li><scrIpt>alert(1);</scRipt><li>
    Preuve : </li><scrIpt>alert(1);</scRipt><li>
+13. URL : http://testphp.vulnweb.com/listproducts.php?artist=%3CscrIpt%3Ealert%281%29%3B%3C%2FscRipt%3E
+   Paramètre : artist
+   Payload : <scrIpt>alert(1);</scRipt>
+   Preuve : <scrIpt>alert(1);</scRipt>
+14. URL : http://testphp.vulnweb.com/product.php?pic=%3CscrIpt%3Ealert%281%29%3B%3C%2FscRipt%3E
+   Paramètre : pic
+   Payload : <scrIpt>alert(1);</scRipt>
+   Preuve : <scrIpt>alert(1);</scRipt>
+15. URL : http://testphp.vulnweb.com/listproducts.php?cat=%3CscrIpt%3Ealert%281%29%3B%3C%2FscRipt%3E
+   Paramètre : cat
+   Payload : <scrIpt>alert(1);</scRipt>
+   Preuve : <scrIpt>alert(1);</scRipt>
 16. URL : http://testphp.vulnweb.com/hpp/params.php?p=valid&pp=%3CscrIpt%3Ealert%281%29%3B%3C%2FscRipt%3E
    Paramètre : pp
    Payload : <scrIpt>alert(1);</scRipt>
@@ -516,16 +516,16 @@ In particular, avoid using the 'sa' or 'db-owner' database users. This does not 
 Grant the minimum database access that is necessary for the application.
 
 Cas détectés (9) :
-1. URL : http://testphp.vulnweb.com/search.php?test=%27
+1. URL : http://testphp.vulnweb.com/userinfo.php
+   Paramètre : uname
+   Payload : '
+   Preuve : You have an error in your SQL syntax
+2. URL : http://testphp.vulnweb.com/search.php?test=%27
    Paramètre : test
    Payload : '
    Preuve : You have an error in your SQL syntax
-2. URL : http://testphp.vulnweb.com/secured/newuser.php
+3. URL : http://testphp.vulnweb.com/secured/newuser.php
    Paramètre : uuname
-   Payload : '
-   Preuve : You have an error in your SQL syntax
-3. URL : http://testphp.vulnweb.com/userinfo.php
-   Paramètre : uname
    Payload : '
    Preuve : You have an error in your SQL syntax
 4. URL : http://testphp.vulnweb.com/userinfo.php
@@ -536,55 +536,22 @@ Cas détectés (9) :
    Paramètre : searchFor
    Payload : ZAP'
    Preuve : You have an error in your SQL syntax
-6. URL : http://testphp.vulnweb.com/artists.php?artist=2%22
+6. URL : http://testphp.vulnweb.com/artists.php?artist=%27
    Paramètre : artist
-   Payload : 2"
+   Payload : '
    Preuve : You have an error in your SQL syntax
-7. URL : http://testphp.vulnweb.com/listproducts.php?cat=4%27
+7. URL : http://testphp.vulnweb.com/listproducts.php?cat=%27
    Paramètre : cat
-   Payload : 4'
+   Payload : '
    Preuve : You have an error in your SQL syntax
-8. URL : http://testphp.vulnweb.com/listproducts.php?artist=3%27
-   Paramètre : artist
-   Payload : 3'
-   Preuve : You have an error in your SQL syntax
-9. URL : http://testphp.vulnweb.com/product.php?pic=5%27
+8. URL : http://testphp.vulnweb.com/product.php?pic=%27
    Paramètre : pic
-   Payload : 5'
+   Payload : '
    Preuve : You have an error in your SQL syntax
-
-============================================================
-
-=== SQL Injection ===
-Risque : High | Confiance : Medium
-
-Description :
-SQL injection may be possible.
-
-Solution :
-Do not trust client side input, even if there is client side validation in place.
-In general, type check all data on the server side.
-If the application uses JDBC, use PreparedStatement or CallableStatement, with parameters passed by '?'
-If the application uses ASP, use ADO Command Objects with strong type checking and parameterized queries.
-If database Stored Procedures can be used, use them.
-Do *not* concatenate strings into queries in the stored procedure, or use 'exec', 'exec immediate', or equivalent functionality!
-Do not create dynamic SQL queries using simple string concatenation.
-Escape all data received from the client.
-Apply an 'allow list' of allowed characters, or a 'deny list' of disallowed characters in user input.
-Apply the principle of least privilege by using the least privileged database user possible.
-In particular, avoid using the 'sa' or 'db-owner' database users. This does not eliminate SQL injection, but minimizes its impact.
-Grant the minimum database access that is necessary for the application.
-
-Cas détectés (3) :
-1. URL : http://testphp.vulnweb.com/guestbook.php
-   Paramètre : name
-   Payload : ZAP' AND '1'='1' --
-2. URL : http://testphp.vulnweb.com/search.php?test=query
-   Paramètre : goButton
-   Payload : go' AND '1'='1' --
-3. URL : http://testphp.vulnweb.com/secured/newuser.php
-   Paramètre : signup
-   Payload : signup AND 1=1 --
+9. URL : http://testphp.vulnweb.com/listproducts.php?artist=%27
+   Paramètre : artist
+   Payload : '
+   Preuve : You have an error in your SQL syntax
 
 ============================================================
 
@@ -609,12 +576,12 @@ In particular, avoid using the 'sa' or 'db-owner' database users. This does not 
 Grant the minimum database access that is necessary for the application.
 
 Cas détectés (2) :
-1. URL : http://testphp.vulnweb.com/artists.php?artist=2
-   Paramètre : artist
-   Payload : 2 and 0 in (select sleep(15) ) --
-2. URL : http://testphp.vulnweb.com/product.php?pic=5
-   Paramètre : pic
-   Payload : 5 and 0 in (select sleep(15) ) --
+1. URL : http://testphp.vulnweb.com/secured/newuser.php
+   Paramètre : uuname
+   Payload : ZAP' / sleep(15) / '
+2. URL : http://testphp.vulnweb.com/userinfo.php
+   Paramètre : uname
+   Payload : ZAP' / sleep(15) / '
 
 ============================================================
 
@@ -628,11 +595,11 @@ Solution :
 Sanitize and analyze every user input coming from any client-side.
 
 Cas détectés (2) :
-1. URL : http://testphp.vulnweb.com/showimage.php?file=%3Cxsl%3Avalue-of+select%3D%22document%28%27http%3A%2F%2Ftestphp.vulnweb.com%3A22%27%29%22%2F%3E
+1. URL : http://testphp.vulnweb.com/showimage.php?file=%3Cxsl%3Avalue-of+select%3D%22document%28%27http%3A%2F%2Ftestphp.vulnweb.com%3A22%27%29%22%2F%3E&size=160
    Paramètre : file
    Payload : <xsl:value-of select="document('http://testphp.vulnweb.com:22')"/>
    Preuve : failed to open stream
-2. URL : http://testphp.vulnweb.com/showimage.php?file=%3Cxsl%3Avalue-of+select%3D%22document%28%27http%3A%2F%2Ftestphp.vulnweb.com%3A22%27%29%22%2F%3E&size=160
+2. URL : http://testphp.vulnweb.com/showimage.php?file=%3Cxsl%3Avalue-of+select%3D%22document%28%27http%3A%2F%2Ftestphp.vulnweb.com%3A22%27%29%22%2F%3E
    Paramètre : file
    Payload : <xsl:value-of select="document('http://testphp.vulnweb.com:22')"/>
    Preuve : failed to open stream
